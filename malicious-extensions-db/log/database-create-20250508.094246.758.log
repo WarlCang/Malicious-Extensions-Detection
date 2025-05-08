@@ -1,0 +1,1346 @@
+[2025-05-08 09:42:46] This is codeql database create malicious-extensions-db --language=javascript --source-root=C:\Users\a8096\OneDrive\Dokument\codex-example-extensions
+[2025-05-08 09:42:46] Log file was started late.
+[2025-05-08 09:42:46] [PROGRESS] database create> Initializing database at C:\Users\a8096\OneDrive\桌面\Malicious-Extensions-Detection\malicious-extensions-db.
+[2025-05-08 09:42:46] Running plumbing command: codeql database init --language=javascript --extractor-options-verbosity=1 --qlconfig-file=C:\Users\a8096\OneDrive\桌面\Malicious-Extensions-Detection\qlconfig.yml --source-root=C:\Users\a8096\OneDrive\Dokument\codex-example-extensions --allow-missing-source-root=false --allow-already-existing -- C:\Users\a8096\OneDrive\桌面\Malicious-Extensions-Detection\malicious-extensions-db
+[2025-05-08 09:42:47] Calling plumbing command: codeql resolve languages --extractor-options-verbosity=1 --format=betterjson
+[2025-05-08 09:42:47] [DETAILS] resolve languages> Scanning for [codeql-extractor.yml] from C:\tools\codeql\.codeqlmanifest.json
+[2025-05-08 09:42:47] [DETAILS] resolve languages> Parsing C:\tools\codeql\actions\codeql-extractor.yml.
+[2025-05-08 09:42:47] [DETAILS] resolve languages> Parsing C:\tools\codeql\cpp\codeql-extractor.yml.
+[2025-05-08 09:42:47] [DETAILS] resolve languages> Parsing C:\tools\codeql\csharp\codeql-extractor.yml.
+[2025-05-08 09:42:48] [DETAILS] resolve languages> Parsing C:\tools\codeql\csv\codeql-extractor.yml.
+[2025-05-08 09:42:48] [DETAILS] resolve languages> Parsing C:\tools\codeql\go\codeql-extractor.yml.
+[2025-05-08 09:42:48] [DETAILS] resolve languages> Parsing C:\tools\codeql\html\codeql-extractor.yml.
+[2025-05-08 09:42:48] [DETAILS] resolve languages> Parsing C:\tools\codeql\java\codeql-extractor.yml.
+[2025-05-08 09:42:48] [DETAILS] resolve languages> Parsing C:\tools\codeql\javascript\codeql-extractor.yml.
+[2025-05-08 09:42:48] [DETAILS] resolve languages> Parsing C:\tools\codeql\properties\codeql-extractor.yml.
+[2025-05-08 09:42:48] [DETAILS] resolve languages> Parsing C:\tools\codeql\python\codeql-extractor.yml.
+[2025-05-08 09:42:48] [DETAILS] resolve languages> Parsing C:\tools\codeql\ruby\codeql-extractor.yml.
+[2025-05-08 09:42:48] [DETAILS] resolve languages> Parsing C:\tools\codeql\swift\codeql-extractor.yml.
+[2025-05-08 09:42:48] [DETAILS] resolve languages> Parsing C:\tools\codeql\xml\codeql-extractor.yml.
+[2025-05-08 09:42:48] [DETAILS] resolve languages> Parsing C:\tools\codeql\yaml\codeql-extractor.yml.
+[2025-05-08 09:42:48] Plumbing command codeql resolve languages completed:
+                      {
+                        "aliases" : {
+                          "c" : "cpp",
+                          "c++" : "cpp",
+                          "c-c++" : "cpp",
+                          "c-cpp" : "cpp",
+                          "c#" : "csharp",
+                          "java-kotlin" : "java",
+                          "kotlin" : "java",
+                          "javascript-typescript" : "javascript",
+                          "typescript" : "javascript"
+                        },
+                        "extractors" : {
+                          "actions" : [
+                            {
+                              "extractor_root" : "C:\\tools\\codeql\\actions",
+                              "extractor_options" : { }
+                            }
+                          ],
+                          "cpp" : [
+                            {
+                              "extractor_root" : "C:\\tools\\codeql\\cpp",
+                              "extractor_options" : {
+                                "scale_timeouts" : {
+                                  "title" : "Value to scale compiler introspection timeouts with",
+                                  "description" : "The extractor attempts to determine what compiler the source code being extracted is compiled with. To this end the extractor makes additional calls to the compiler, some of which are expected to return within a certain fixed time (either 10s or 15s). On some systems that are under high load this time might be too short, and can be scaled up using this option.\n",
+                                  "type" : "string",
+                                  "pattern" : "[0-9]+"
+                                },
+                                "log_verbosity" : {
+                                  "title" : "Verbosity of the extractor logging",
+                                  "description" : "Set the verbosity of the extractor logging to 'quiet' (0), 'normal' (1), 'chatty' (2), or 'noisy' (3). The default is 'normal'.\n",
+                                  "type" : "string",
+                                  "pattern" : "[0-3]"
+                                }
+                              }
+                            }
+                          ],
+                          "csharp" : [
+                            {
+                              "extractor_root" : "C:\\tools\\codeql\\csharp",
+                              "extractor_options" : {
+                                "trap" : {
+                                  "title" : "Options pertaining to TRAP.",
+                                  "description" : "Options pertaining to TRAP.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "compression" : {
+                                      "title" : "Controls compression for the TRAP files written by the extractor.",
+                                      "description" : "This option is only intended for use in debugging the extractor. Accepted values are 'brotli' (the default, to write brotli-compressed TRAP), 'gzip', and 'none' (to write uncompressed TRAP).\n",
+                                      "type" : "string",
+                                      "pattern" : "^(none|gzip|brotli)$"
+                                    }
+                                  }
+                                },
+                                "buildless" : {
+                                  "title" : "DEPRECATED - Whether to use buildless (standalone) extraction.",
+                                  "description" : "DEPRECATED: Use `--build-mode none` instead.\nA value indicating, which type of extraction the autobuilder should perform. If 'true', then the standalone extractor will be used, otherwise tracing extraction will be performed. The default is 'false'. Note that buildless extraction will generally yield less accurate analysis results, and should only be used in cases where it is not possible to build the code (for example if it uses inaccessible dependencies).\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                },
+                                "logging" : {
+                                  "title" : "Options pertaining to logging.",
+                                  "description" : "Options pertaining to logging.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "verbosity" : {
+                                      "title" : "Extractor logging verbosity level.",
+                                      "description" : "Controls the level of verbosity of the extractor. The supported levels are (in order of increasing verbosity):\n  - off\n  - errors\n  - warnings\n  - info or progress\n  - debug or progress+\n  - trace or progress++\n  - progress+++\n",
+                                      "type" : "string",
+                                      "pattern" : "^(off|errors|warnings|(info|progress)|(debug|progress\\+)|(trace|progress\\+\\+)|progress\\+\\+\\+)$"
+                                    }
+                                  }
+                                },
+                                "binlog" : {
+                                  "title" : "Binlog",
+                                  "description" : "[EXPERIMENTAL] The value is a path to the MsBuild binary log file that should be extracted. This option only works when `--build-mode none` is also specified.\n",
+                                  "type" : "array"
+                                }
+                              }
+                            }
+                          ],
+                          "csv" : [
+                            {
+                              "extractor_root" : "C:\\tools\\codeql\\csv"
+                            }
+                          ],
+                          "go" : [
+                            {
+                              "extractor_root" : "C:\\tools\\codeql\\go",
+                              "extractor_options" : {
+                                "extract_tests" : {
+                                  "title" : "Whether to include Go test files in the CodeQL database.",
+                                  "description" : "A value indicating whether Go test files should be included in the CodeQL database. The default is 'false'.\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                },
+                                "extract_vendor_dirs" : {
+                                  "title" : "Whether to include Go vendor directories in the CodeQL database.",
+                                  "description" : "A value indicating whether Go vendor directories should be included in the CodeQL database. The default is 'false'.\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                }
+                              }
+                            }
+                          ],
+                          "html" : [
+                            {
+                              "extractor_root" : "C:\\tools\\codeql\\html"
+                            }
+                          ],
+                          "java" : [
+                            {
+                              "extractor_root" : "C:\\tools\\codeql\\java",
+                              "extractor_options" : {
+                                "exclude" : {
+                                  "title" : "A glob excluding files from analysis.",
+                                  "description" : "A glob indicating what files to exclude from the analysis. This accepts glob patterns that are supported by Java's 'getPathMatcher' implementation.\n",
+                                  "type" : "string"
+                                },
+                                "add_prefer_source" : {
+                                  "title" : "Whether to always prefer source files over class files.",
+                                  "description" : "A value indicating whether source files should be preferred over class files. If set to 'true', the extraction adds '-Xprefer:source' to the javac command line. If set to 'false', the extraction uses the default javac behavior ('-Xprefer:newer'). The default is 'true'.\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                },
+                                "buildless" : {
+                                  "title" : "Whether to use buildless (standalone) extraction (experimental).",
+                                  "description" : "A value indicating, which type of extraction the autobuilder should perform. If 'true', then the standalone extractor will be used, otherwise tracing extraction will be performed. The default is 'false'. Note that buildless extraction will generally yield less accurate analysis results, and should only be used in cases where it is not possible to build the code (for example if it uses inaccessible dependencies).\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                },
+                                "buildless_dependency_dir" : {
+                                  "title" : "The path where buildless (standalone) extraction should keep dependencies.",
+                                  "description" : "If set, the buildless (standalone) extractor will store dependencies in this directory.\n",
+                                  "type" : "string"
+                                },
+                                "minimize_dependency_jars" : {
+                                  "title" : "Whether to rewrite and minimize downloaded JAR dependencies (experimental).",
+                                  "description" : "If 'true', JAR dependencies downloaded during extraction will be rewritten to remove unneeded data, such as method bodies. The default is 'false'.\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                }
+                              }
+                            }
+                          ],
+                          "javascript" : [
+                            {
+                              "extractor_root" : "C:\\tools\\codeql\\javascript",
+                              "extractor_options" : {
+                                "skip_types" : {
+                                  "title" : "Skip type extraction for TypeScript",
+                                  "description" : "Whether to skip the extraction of types in a TypeScript application",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                }
+                              }
+                            }
+                          ],
+                          "properties" : [
+                            {
+                              "extractor_root" : "C:\\tools\\codeql\\properties"
+                            }
+                          ],
+                          "python" : [
+                            {
+                              "extractor_root" : "C:\\tools\\codeql\\python",
+                              "extractor_options" : {
+                                "logging" : {
+                                  "title" : "Options pertaining to logging.",
+                                  "description" : "Options pertaining to logging.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "verbosity" : {
+                                      "title" : "Python extractor logging verbosity level.",
+                                      "description" : "Controls the level of verbosity of the CodeQL Python extractor.\nThe supported levels are (in order of increasing verbosity):\n\n  - off\n  - errors\n  - warnings\n  - info or progress\n  - debug or progress+\n  - trace or progress++\n  - progress+++\n",
+                                      "type" : "string",
+                                      "pattern" : "^(off|errors|warnings|(info|progress)|(debug|progress\\+)|(trace|progress\\+\\+)|progress\\+\\+\\+)$"
+                                    }
+                                  }
+                                },
+                                "python_executable_name" : {
+                                  "title" : "Controls the name of the Python executable used by the Python extractor.",
+                                  "description" : "The Python extractor uses platform-dependent heuristics to determine the name of the Python executable to use. Specifying a value for this option overrides the name of the Python executable used by the extractor. Accepted values are py, python and python3. Use this setting with caution, the Python extractor requires Python 3 to run.\n",
+                                  "type" : "string",
+                                  "pattern" : "^(py|python|python3)$"
+                                }
+                              }
+                            }
+                          ],
+                          "ruby" : [
+                            {
+                              "extractor_root" : "C:\\tools\\codeql\\ruby",
+                              "extractor_options" : {
+                                "trap" : {
+                                  "title" : "Options pertaining to TRAP.",
+                                  "description" : "Options pertaining to TRAP.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "compression" : {
+                                      "title" : "Controls compression for the TRAP files written by the extractor.",
+                                      "description" : "This option is only intended for use in debugging the extractor. Accepted values are 'gzip' (the default, to write gzip-compressed TRAP) and 'none' (to write uncompressed TRAP).\n",
+                                      "type" : "string",
+                                      "pattern" : "^(none|gzip)$"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "swift" : [
+                            {
+                              "extractor_root" : "C:\\tools\\codeql\\swift"
+                            }
+                          ],
+                          "xml" : [
+                            {
+                              "extractor_root" : "C:\\tools\\codeql\\xml"
+                            }
+                          ],
+                          "yaml" : [
+                            {
+                              "extractor_root" : "C:\\tools\\codeql\\yaml"
+                            }
+                          ]
+                        }
+                      }
+[2025-05-08 09:42:48] [PROGRESS] database init> Calculating baseline information in C:\Users\a8096\OneDrive\Dokument\codex-example-extensions
+[2025-05-08 09:42:48] [SPAMMY] database init> Ignoring the following directories when processing baseline information: .git, .hg, .svn.
+[2025-05-08 09:42:48] [DETAILS] database init> Running command in C:\Users\a8096\OneDrive\Dokument\codex-example-extensions: C:\tools\codeql\tools\win64\scc.exe --by-file --exclude-dir .git,.hg,.svn --format json --no-large --no-min .
+[2025-05-08 09:42:50] Using configure-baseline script C:\tools\codeql\javascript\tools\configure-baseline.cmd.
+[2025-05-08 09:42:50] [PROGRESS] database init> Running command in C:\Users\a8096\OneDrive\Dokument\codex-example-extensions: [C:\tools\codeql\javascript\tools\configure-baseline.cmd]
+[2025-05-08 09:42:50] [SPAMMY] database init> Ignored an additional 1 files when processing baseline information for JavaScript due to paths and paths-ignore configuration.
+[2025-05-08 09:42:50] [SPAMMY] database init> Found 58 baseline files for javascript.
+[2025-05-08 09:42:51] [PROGRESS] database init> Calculated baseline information for languages: javascript (2.3s).
+[2025-05-08 09:42:51] [PROGRESS] database init> Resolving extractor javascript.
+[2025-05-08 09:42:51] [DETAILS] database init> Found candidate extractor root for javascript: C:\tools\codeql\javascript.
+[2025-05-08 09:42:51] [PROGRESS] database init> Successfully loaded extractor JavaScript/TypeScript (javascript) from C:\tools\codeql\javascript.
+[2025-05-08 09:42:51] [PROGRESS] database init> Created skeleton CodeQL database at C:\Users\a8096\OneDrive\桌面\Malicious-Extensions-Detection\malicious-extensions-db. This in-progress database is ready to be populated by an extractor.
+[2025-05-08 09:42:51] Plumbing command codeql database init completed.
+[2025-05-08 09:42:51] [PROGRESS] database create> Running build command: []
+[2025-05-08 09:42:51] Running plumbing command: codeql database trace-command --working-dir=C:\Users\a8096\OneDrive\Dokument\codex-example-extensions --index-traceless-dbs --no-db-cluster -- C:\Users\a8096\OneDrive\桌面\Malicious-Extensions-Detection\malicious-extensions-db
+[2025-05-08 09:42:51] Using autobuild script C:\tools\codeql\javascript\tools\autobuild.cmd.
+[2025-05-08 09:42:51] [PROGRESS] database trace-command> Running command in C:\Users\a8096\OneDrive\Dokument\codex-example-extensions: [C:\tools\codeql\javascript\tools\autobuild.cmd]
+[2025-05-08 09:42:52] [build-stdout] Single-threaded extraction.
+[2025-05-08 09:42:54] [build-stderr] Skipping C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\3-getAParameter\src\bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0\vendors-node_modules_react-dom_index_js-node_modules_react-icons_Fi_index_esm_js-node_modules-ff2ca7.js because it is too large (11.038396 MB). The limit is 10 MB.
+[2025-05-08 09:42:54] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\keyword_analysis\keyword_analysis.html
+[2025-05-08 09:42:54] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\keyword_analysis\keyword_analysis.html (311 ms)
+[2025-05-08 09:42:54] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\margin_calculator\margin_calculator.html
+[2025-05-08 09:42:54] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\margin_calculator\margin_calculator.html (48 ms)
+[2025-05-08 09:42:54] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\options\options.html
+[2025-05-08 09:42:54] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\options\options.html (24 ms)
+[2025-05-08 09:42:54] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\popup\popup.html
+[2025-05-08 09:42:54] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\popup\popup.html (30 ms)
+[2025-05-08 09:42:55] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\product_analysis\product_analysis.html
+[2025-05-08 09:42:55] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\product_analysis\product_analysis.html (31 ms)
+[2025-05-08 09:42:55] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\product_analysis_extracting_page\product_analysis_extracting_page.html
+[2025-05-08 09:42:55] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\product_analysis_extracting_page\product_analysis_extracting_page.html (34 ms)
+[2025-05-08 09:42:55] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\JS-SEARCH-ompmbcpalofeaelpfohpmpmjhjahgpbp.1_0_2_0\src\static\html\main.html
+[2025-05-08 09:42:55] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\JS-SEARCH-ompmbcpalofeaelpfohpmpmjhjahgpbp.1_0_2_0\src\static\html\main.html (300 ms)
+[2025-05-08 09:42:55] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\import.html
+[2025-05-08 09:42:55] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\import.html (44 ms)
+[2025-05-08 09:42:55] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\index.html
+[2025-05-08 09:42:55] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\index.html (40 ms)
+[2025-05-08 09:42:55] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\new_tab.html
+[2025-05-08 09:42:55] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\new_tab.html (92 ms)
+[2025-05-08 09:42:55] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\popup.html
+[2025-05-08 09:42:55] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\popup.html (27 ms)
+[2025-05-08 09:42:55] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\welcome.html
+[2025-05-08 09:42:55] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\welcome.html (33 ms)
+[2025-05-08 09:42:55] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\1-getAMethodCall\src\agpoehmhgoieigdbjhgphpagmloehamn.2_0_0_0\newtab.html
+[2025-05-08 09:42:55] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\1-getAMethodCall\src\agpoehmhgoieigdbjhgphpagmloehamn.2_0_0_0\newtab.html (46 ms)
+[2025-05-08 09:42:55] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\2-getAnArgument\src\kbnpeiabjlfcakokkpbcgalbgiljoddf.2_0_0_0\index.html
+[2025-05-08 09:42:55] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\2-getAnArgument\src\kbnpeiabjlfcakokkpbcgalbgiljoddf.2_0_0_0\index.html (43 ms)
+[2025-05-08 09:42:55] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\3-getAParameter\src\bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0\options.html
+[2025-05-08 09:42:55] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\3-getAParameter\src\bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0\options.html (33 ms)
+[2025-05-08 09:42:55] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\3-getAParameter\src\bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0\popup.html
+[2025-05-08 09:42:55] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\3-getAParameter\src\bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0\popup.html (24 ms)
+[2025-05-08 09:42:55] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\JS-SEARCH-noUI-SURL-gjnlgmpokfpkonbdfkjbihmliofkjeok.1_0_6_0\src\html\newtab.html
+[2025-05-08 09:42:55] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\JS-SEARCH-noUI-SURL-gjnlgmpokfpkonbdfkjbihmliofkjeok.1_0_6_0\src\html\newtab.html (126 ms)
+[2025-05-08 09:42:55] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\background\index.html
+[2025-05-08 09:42:55] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\background\index.html (31 ms)
+[2025-05-08 09:42:55] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\options\options.html
+[2025-05-08 09:42:55] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\options\options.html (18 ms)
+[2025-05-08 09:42:55] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\popup\popup.html
+[2025-05-08 09:42:56] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\popup\popup.html (35 ms)
+[2025-05-08 09:42:56] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\BOOKMARK-akmaldiojcdmijjdgahboemcgbfmihlh.0_7_0_0\src\popup.html
+[2025-05-08 09:42:56] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\BOOKMARK-akmaldiojcdmijjdgahboemcgbfmihlh.0_7_0_0\src\popup.html (97 ms)
+[2025-05-08 09:42:56] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\options.html
+[2025-05-08 09:42:56] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\options.html (25 ms)
+[2025-05-08 09:42:56] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\popup.html
+[2025-05-08 09:42:56] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\popup.html (13 ms)
+[2025-05-08 09:42:56] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\tab.html
+[2025-05-08 09:42:56] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\tab.html (14 ms)
+[2025-05-08 09:42:56] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\FORM-SEARCH-pkfehkjibljchopnmfifbeanijojgkgb.3_5_0_0\src\search.html
+[2025-05-08 09:42:56] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\FORM-SEARCH-pkfehkjibljchopnmfifbeanijojgkgb.3_5_0_0\src\search.html (47 ms)
+[2025-05-08 09:42:56] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\1-getAMethodCall\src\agpoehmhgoieigdbjhgphpagmloehamn.2_0_0_0\lib\jquery\jquery-3.4.1.js
+[2025-05-08 09:43:01] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\1-getAMethodCall\src\agpoehmhgoieigdbjhgphpagmloehamn.2_0_0_0\lib\jquery\jquery-3.4.1.js (5248 ms)
+[2025-05-08 09:43:01] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\background.js
+[2025-05-08 09:43:05] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\background.js (4363 ms)
+[2025-05-08 09:43:05] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0a402b.2ef82da2.js
+[2025-05-08 09:43:05] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0a402b.2ef82da2.js (37 ms)
+[2025-05-08 09:43:05] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0b24d9.d2273d8d.js
+[2025-05-08 09:43:05] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0b24d9.d2273d8d.js (48 ms)
+[2025-05-08 09:43:05] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0b66fa.dff5ba3a.js
+[2025-05-08 09:43:06] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0b66fa.dff5ba3a.js (102 ms)
+[2025-05-08 09:43:06] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0b9196.c01319be.js
+[2025-05-08 09:43:06] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0b9196.c01319be.js (46 ms)
+[2025-05-08 09:43:06] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0ba6b9.dc1f46fe.js
+[2025-05-08 09:43:06] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0ba6b9.dc1f46fe.js (31 ms)
+[2025-05-08 09:43:06] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0ba756.5b4eb808.js
+[2025-05-08 09:43:06] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0ba756.5b4eb808.js (34 ms)
+[2025-05-08 09:43:06] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0bac2f.25b21b73.js
+[2025-05-08 09:43:06] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0bac2f.25b21b73.js (50 ms)
+[2025-05-08 09:43:06] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0c073f.0cb17801.js
+[2025-05-08 09:43:06] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0c073f.0cb17801.js (38 ms)
+[2025-05-08 09:43:06] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0c0a17.4625271b.js
+[2025-05-08 09:43:06] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0c0a17.4625271b.js (41 ms)
+[2025-05-08 09:43:06] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0c4324.9399e7b0.js
+[2025-05-08 09:43:06] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0c4324.9399e7b0.js (35 ms)
+[2025-05-08 09:43:06] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0c7930.df875be2.js
+[2025-05-08 09:43:06] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0c7930.df875be2.js (35 ms)
+[2025-05-08 09:43:06] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0cbd04.28e87e87.js
+[2025-05-08 09:43:06] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0cbd04.28e87e87.js (53 ms)
+[2025-05-08 09:43:06] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0cc3fb.72476e8c.js
+[2025-05-08 09:43:06] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0cc3fb.72476e8c.js (43 ms)
+[2025-05-08 09:43:06] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0ce83a.5f9628cb.js
+[2025-05-08 09:43:06] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0ce83a.5f9628cb.js (33 ms)
+[2025-05-08 09:43:06] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0ceeb7.453dfdef.js
+[2025-05-08 09:43:06] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0ceeb7.453dfdef.js (33 ms)
+[2025-05-08 09:43:06] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0d6334.0b31ffdc.js
+[2025-05-08 09:43:06] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0d6334.0b31ffdc.js (33 ms)
+[2025-05-08 09:43:06] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0d6af4.e8fb44cb.js
+[2025-05-08 09:43:06] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0d6af4.e8fb44cb.js (37 ms)
+[2025-05-08 09:43:06] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0d72e1.bdb768d2.js
+[2025-05-08 09:43:06] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0d72e1.bdb768d2.js (39 ms)
+[2025-05-08 09:43:06] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0e2537.b18cb260.js
+[2025-05-08 09:43:06] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0e2537.b18cb260.js (65 ms)
+[2025-05-08 09:43:06] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0e9aab.e55fe3e8.js
+[2025-05-08 09:43:06] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d0e9aab.e55fe3e8.js (36 ms)
+[2025-05-08 09:43:06] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d213369.5bbb9457.js
+[2025-05-08 09:43:06] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d213369.5bbb9457.js (46 ms)
+[2025-05-08 09:43:06] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d216be4.e1aa4249.js
+[2025-05-08 09:43:06] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d216be4.e1aa4249.js (32 ms)
+[2025-05-08 09:43:06] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d217177.2f985ccb.js
+[2025-05-08 09:43:06] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d217177.2f985ccb.js (33 ms)
+[2025-05-08 09:43:06] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d217363.dbe960fa.js
+[2025-05-08 09:43:06] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d217363.dbe960fa.js (37 ms)
+[2025-05-08 09:43:06] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d219ff8.a8f35cbb.js
+[2025-05-08 09:43:06] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d219ff8.a8f35cbb.js (47 ms)
+[2025-05-08 09:43:06] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d221485.c1d1cdf5.js
+[2025-05-08 09:43:06] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d221485.c1d1cdf5.js (33 ms)
+[2025-05-08 09:43:07] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d221b5b.bd35394c.js
+[2025-05-08 09:43:07] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d221b5b.bd35394c.js (29 ms)
+[2025-05-08 09:43:07] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d225665.04fd8a3f.js
+[2025-05-08 09:43:07] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d225665.04fd8a3f.js (46 ms)
+[2025-05-08 09:43:07] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d2262ad.98ed41bc.js
+[2025-05-08 09:43:07] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d2262ad.98ed41bc.js (39 ms)
+[2025-05-08 09:43:07] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d229227.8a050403.js
+[2025-05-08 09:43:07] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d229227.8a050403.js (30 ms)
+[2025-05-08 09:43:07] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d22a107.f3743d81.js
+[2025-05-08 09:43:07] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d22a107.f3743d81.js (38 ms)
+[2025-05-08 09:43:07] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d22e0ba.959306ae.js
+[2025-05-08 09:43:07] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-2d22e0ba.959306ae.js (42 ms)
+[2025-05-08 09:43:07] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-common.d3333ef8.js
+[2025-05-08 09:43:07] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-common.d3333ef8.js (603 ms)
+[2025-05-08 09:43:07] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-vendors.81072308.js
+[2025-05-08 09:43:15] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\chunk-vendors.81072308.js (7591 ms)
+[2025-05-08 09:43:15] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\import.70b4045a.js
+[2025-05-08 09:43:15] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\import.70b4045a.js (101 ms)
+[2025-05-08 09:43:15] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\new_tab.be8d9eaa.js
+[2025-05-08 09:43:15] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\new_tab.be8d9eaa.js (144 ms)
+[2025-05-08 09:43:15] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\popup.31498d16.js
+[2025-05-08 09:43:16] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\popup.31498d16.js (1082 ms)
+[2025-05-08 09:43:16] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\welcome.836f1d84.js
+[2025-05-08 09:43:17] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\js\welcome.836f1d84.js (764 ms)
+[2025-05-08 09:43:17] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\2-getAnArgument\src\kbnpeiabjlfcakokkpbcgalbgiljoddf.2_0_0_0\js\bg.js
+[2025-05-08 09:43:17] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\2-getAnArgument\src\kbnpeiabjlfcakokkpbcgalbgiljoddf.2_0_0_0\js\bg.js (57 ms)
+[2025-05-08 09:43:17] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\2-getAnArgument\src\kbnpeiabjlfcakokkpbcgalbgiljoddf.2_0_0_0\js\helpers.js
+[2025-05-08 09:43:17] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\2-getAnArgument\src\kbnpeiabjlfcakokkpbcgalbgiljoddf.2_0_0_0\js\helpers.js (34 ms)
+[2025-05-08 09:43:17] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\2-getAnArgument\src\kbnpeiabjlfcakokkpbcgalbgiljoddf.2_0_0_0\js\search.js
+[2025-05-08 09:43:17] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\2-getAnArgument\src\kbnpeiabjlfcakokkpbcgalbgiljoddf.2_0_0_0\js\search.js (124 ms)
+[2025-05-08 09:43:17] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\2-getAnArgument\src\kbnpeiabjlfcakokkpbcgalbgiljoddf.2_0_0_0\js\wp.js
+[2025-05-08 09:43:17] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\2-getAnArgument\src\kbnpeiabjlfcakokkpbcgalbgiljoddf.2_0_0_0\js\wp.js (70 ms)
+[2025-05-08 09:43:17] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\18\18.js
+[2025-05-08 09:43:20] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\18\18.js (2903 ms)
+[2025-05-08 09:43:20] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\313\313.js
+[2025-05-08 09:43:25] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\313\313.js (4743 ms)
+[2025-05-08 09:43:25] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\382\382.js
+[2025-05-08 09:43:27] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\382\382.js (1836 ms)
+[2025-05-08 09:43:27] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\480\480.js
+[2025-05-08 09:43:28] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\480\480.js (1570 ms)
+[2025-05-08 09:43:28] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\486\486.js
+[2025-05-08 09:43:30] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\486\486.js (1794 ms)
+[2025-05-08 09:43:30] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\554\554.js
+[2025-05-08 09:43:31] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\554\554.js (656 ms)
+[2025-05-08 09:43:31] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\893\893.js
+[2025-05-08 09:43:31] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\893\893.js (421 ms)
+[2025-05-08 09:43:31] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\981\981.js
+[2025-05-08 09:43:32] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\981\981.js (409 ms)
+[2025-05-08 09:43:32] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\content_script\content_script.js
+[2025-05-08 09:43:32] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\content_script\content_script.js (41 ms)
+[2025-05-08 09:43:32] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\iframe_script\iframe_script.js
+[2025-05-08 09:43:32] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\iframe_script\iframe_script.js (23 ms)
+[2025-05-08 09:43:32] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\inject\inject.js
+[2025-05-08 09:43:32] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\inject\inject.js (20 ms)
+[2025-05-08 09:43:32] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\keyword_analysis\keyword_analysis.js
+[2025-05-08 09:43:32] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\keyword_analysis\keyword_analysis.js (656 ms)
+[2025-05-08 09:43:32] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\keyword_analysis_script\keyword_analysis_script.js
+[2025-05-08 09:43:32] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\keyword_analysis_script\keyword_analysis_script.js (29 ms)
+[2025-05-08 09:43:32] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\margin_calculator\margin_calculator.js
+[2025-05-08 09:43:33] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\margin_calculator\margin_calculator.js (397 ms)
+[2025-05-08 09:43:33] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\margin_calculator_script\margin_calculator_script.js
+[2025-05-08 09:43:33] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\margin_calculator_script\margin_calculator_script.js (31 ms)
+[2025-05-08 09:43:33] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\options\options.js
+[2025-05-08 09:43:33] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\options\options.js (56 ms)
+[2025-05-08 09:43:33] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\parser\parser.js
+[2025-05-08 09:43:33] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\parser\parser.js (136 ms)
+[2025-05-08 09:43:33] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\popup\popup.js
+[2025-05-08 09:43:33] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\popup\popup.js (249 ms)
+[2025-05-08 09:43:33] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\product_analysis\product_analysis.js
+[2025-05-08 09:43:34] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\product_analysis\product_analysis.js (425 ms)
+[2025-05-08 09:43:34] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\product_analysis_extracting_page\product_analysis_extracting_page.js
+[2025-05-08 09:43:34] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\product_analysis_extracting_page\product_analysis_extracting_page.js (297 ms)
+[2025-05-08 09:43:34] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\product_analysis_script\product_analysis_script.js
+[2025-05-08 09:43:34] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\product_analysis_script\product_analysis_script.js (76 ms)
+[2025-05-08 09:43:34] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0\src\js\libs\balenced.js
+[2025-05-08 09:43:34] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0\src\js\libs\balenced.js (40 ms)
+[2025-05-08 09:43:34] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0\src\js\libs\compare-versions.js
+[2025-05-08 09:43:34] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0\src\js\libs\compare-versions.js (77 ms)
+[2025-05-08 09:43:34] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\JS-SEARCH-noUI-SURL-gjnlgmpokfpkonbdfkjbihmliofkjeok.1_0_6_0\src\lib\js\jquery.js
+[2025-05-08 09:43:37] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\JS-SEARCH-noUI-SURL-gjnlgmpokfpkonbdfkjbihmliofkjeok.1_0_6_0\src\lib\js\jquery.js (2335 ms)
+[2025-05-08 09:43:37] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\JS-SEARCH-noUI-SURL-gjnlgmpokfpkonbdfkjbihmliofkjeok.1_0_6_0\src\lib\js\jqueryui.js
+[2025-05-08 09:43:41] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\JS-SEARCH-noUI-SURL-gjnlgmpokfpkonbdfkjbihmliofkjeok.1_0_6_0\src\lib\js\jqueryui.js (4172 ms)
+[2025-05-08 09:43:41] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\JS-SEARCH-ompmbcpalofeaelpfohpmpmjhjahgpbp.1_0_2_0\src\static\js\script.js
+[2025-05-08 09:43:41] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\JS-SEARCH-ompmbcpalofeaelpfohpmpmjhjahgpbp.1_0_2_0\src\static\js\script.js (143 ms)
+[2025-05-08 09:43:41] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\manifest.json
+[2025-05-08 09:43:41] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\src\cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0\manifest.json (24 ms)
+[2025-05-08 09:43:41] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\1-getAMethodCall\src\agpoehmhgoieigdbjhgphpagmloehamn.2_0_0_0\background.js
+[2025-05-08 09:43:41] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\1-getAMethodCall\src\agpoehmhgoieigdbjhgphpagmloehamn.2_0_0_0\background.js (16 ms)
+[2025-05-08 09:43:41] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\1-getAMethodCall\src\agpoehmhgoieigdbjhgphpagmloehamn.2_0_0_0\manifest.json
+[2025-05-08 09:43:41] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\1-getAMethodCall\src\agpoehmhgoieigdbjhgphpagmloehamn.2_0_0_0\manifest.json (14 ms)
+[2025-05-08 09:43:41] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\1-getAMethodCall\src\agpoehmhgoieigdbjhgphpagmloehamn.2_0_0_0\newtab.js
+[2025-05-08 09:43:41] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\1-getAMethodCall\src\agpoehmhgoieigdbjhgphpagmloehamn.2_0_0_0\newtab.js (63 ms)
+[2025-05-08 09:43:41] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\2-getAnArgument\src\kbnpeiabjlfcakokkpbcgalbgiljoddf.2_0_0_0\manifest.json
+[2025-05-08 09:43:41] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\2-getAnArgument\src\kbnpeiabjlfcakokkpbcgalbgiljoddf.2_0_0_0\manifest.json (9 ms)
+[2025-05-08 09:43:41] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\3-getAParameter\src\bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0\background.js
+[2025-05-08 09:43:41] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\3-getAParameter\src\bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0\background.js (39 ms)
+[2025-05-08 09:43:41] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\3-getAParameter\src\bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0\contentScript.js
+[2025-05-08 09:43:41] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\3-getAParameter\src\bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0\contentScript.js (11 ms)
+[2025-05-08 09:43:41] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\3-getAParameter\src\bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0\manifest.json
+[2025-05-08 09:43:41] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\3-getAParameter\src\bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0\manifest.json (25 ms)
+[2025-05-08 09:43:41] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\3-getAParameter\src\bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0\options.js
+[2025-05-08 09:43:41] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\3-getAParameter\src\bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0\options.js (18 ms)
+[2025-05-08 09:43:41] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\3-getAParameter\src\bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0\popup.js
+[2025-05-08 09:43:42] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\3-getAParameter\src\bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0\popup.js (855 ms)
+[2025-05-08 09:43:42] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\background.js
+[2025-05-08 09:43:43] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\background.js (712 ms)
+[2025-05-08 09:43:43] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\manifest.json
+[2025-05-08 09:43:43] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\src\ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0\manifest.json (15 ms)
+[2025-05-08 09:43:43] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\assets\index.733e49c2.js
+[2025-05-08 09:43:43] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\assets\index.733e49c2.js (133 ms)
+[2025-05-08 09:43:43] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\assets\main.1ab60b14.js
+[2025-05-08 09:43:43] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\assets\main.1ab60b14.js (88 ms)
+[2025-05-08 09:43:43] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\assets\options.d30db539.js
+[2025-05-08 09:43:43] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\assets\options.d30db539.js (153 ms)
+[2025-05-08 09:43:43] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\assets\vendor.db840a70.js
+[2025-05-08 09:43:45] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\assets\vendor.db840a70.js (1781 ms)
+[2025-05-08 09:43:45] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\FORM-SEARCH-pkfehkjibljchopnmfifbeanijojgkgb.3_5_0_0\src\js\main.js
+[2025-05-08 09:43:45] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\FORM-SEARCH-pkfehkjibljchopnmfifbeanijojgkgb.3_5_0_0\src\js\main.js (31 ms)
+[2025-05-08 09:43:45] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\JS-SEARCH-noUI-SURL-gjnlgmpokfpkonbdfkjbihmliofkjeok.1_0_6_0\src\js\background.js
+[2025-05-08 09:43:45] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\JS-SEARCH-noUI-SURL-gjnlgmpokfpkonbdfkjbihmliofkjeok.1_0_6_0\src\js\background.js (35 ms)
+[2025-05-08 09:43:45] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\JS-SEARCH-noUI-SURL-gjnlgmpokfpkonbdfkjbihmliofkjeok.1_0_6_0\src\js\logic.js
+[2025-05-08 09:43:45] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\JS-SEARCH-noUI-SURL-gjnlgmpokfpkonbdfkjbihmliofkjeok.1_0_6_0\src\js\logic.js (43 ms)
+[2025-05-08 09:43:45] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\JS-SEARCH-noUI-SURL-gjnlgmpokfpkonbdfkjbihmliofkjeok.1_0_6_0\src\js\tab.js
+[2025-05-08 09:43:45] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\JS-SEARCH-noUI-SURL-gjnlgmpokfpkonbdfkjbihmliofkjeok.1_0_6_0\src\js\tab.js (17 ms)
+[2025-05-08 09:43:45] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\JS-SEARCH-ompmbcpalofeaelpfohpmpmjhjahgpbp.1_0_2_0\src\background\runtime.js
+[2025-05-08 09:43:45] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\JS-SEARCH-ompmbcpalofeaelpfohpmpmjhjahgpbp.1_0_2_0\src\background\runtime.js (11 ms)
+[2025-05-08 09:43:45] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\background\contextMenus.js
+[2025-05-08 09:43:45] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\background\contextMenus.js (18 ms)
+[2025-05-08 09:43:45] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\background\ext.js
+[2025-05-08 09:43:45] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\background\ext.js (66 ms)
+[2025-05-08 09:43:45] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\background\listeners.js
+[2025-05-08 09:43:45] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\background\listeners.js (29 ms)
+[2025-05-08 09:43:45] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\background\omni.js
+[2025-05-08 09:43:45] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\background\omni.js (28 ms)
+[2025-05-08 09:43:45] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\background\search.js
+[2025-05-08 09:43:45] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\background\search.js (20 ms)
+[2025-05-08 09:43:45] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\background\settings.js
+[2025-05-08 09:43:45] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\background\settings.js (13 ms)
+[2025-05-08 09:43:45] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\background\startup.js
+[2025-05-08 09:43:45] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\background\startup.js (65 ms)
+[2025-05-08 09:43:45] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\options\options.js
+[2025-05-08 09:43:45] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\options\options.js (15 ms)
+[2025-05-08 09:43:45] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\options\tabContent.js
+[2025-05-08 09:43:45] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\options\tabContent.js (53 ms)
+[2025-05-08 09:43:45] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\popup\popup.js
+[2025-05-08 09:43:45] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\popup\popup.js (20 ms)
+[2025-05-08 09:43:45] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\popup\tabContent.js
+[2025-05-08 09:43:45] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\popup\tabContent.js (31 ms)
+[2025-05-08 09:43:45] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\prompt\prompt.js
+[2025-05-08 09:43:45] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\prompt\prompt.js (46 ms)
+[2025-05-08 09:43:45] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\result\propWrite-search.js
+[2025-05-08 09:43:46] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\0-propWrite\result\propWrite-search.js (871 ms)
+[2025-05-08 09:43:46] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\1-getAMethodCall\result\encodeURI-multipleSinks-search.js
+[2025-05-08 09:43:46] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\1-getAMethodCall\result\encodeURI-multipleSinks-search.js (119 ms)
+[2025-05-08 09:43:46] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\2-getAnArgument\result\getAnArgument-encodeURI-multipleSinks-search.js
+[2025-05-08 09:43:47] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\2-getAnArgument\result\getAnArgument-encodeURI-multipleSinks-search.js (116 ms)
+[2025-05-08 09:43:47] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\3-getAParameter\result\getAParameter-react-functionbody-chrome.tabs.create.js
+[2025-05-08 09:43:47] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\3-getAParameter\result\getAParameter-react-functionbody-chrome.tabs.create.js (79 ms)
+[2025-05-08 09:43:47] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\3-getAParameter\result\UI-URL.js
+[2025-05-08 09:43:47] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\3-getAParameter\result\UI-URL.js (73 ms)
+[2025-05-08 09:43:47] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\result\yield-search.js
+[2025-05-08 09:43:47] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\4-yield\result\yield-search.js (12 ms)
+[2025-05-08 09:43:47] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\BOOKMARK-akmaldiojcdmijjdgahboemcgbfmihlh.0_7_0_0\src\background.js
+[2025-05-08 09:43:47] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\BOOKMARK-akmaldiojcdmijjdgahboemcgbfmihlh.0_7_0_0\src\background.js (132 ms)
+[2025-05-08 09:43:47] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\BOOKMARK-akmaldiojcdmijjdgahboemcgbfmihlh.0_7_0_0\src\manifest.json
+[2025-05-08 09:43:47] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\BOOKMARK-akmaldiojcdmijjdgahboemcgbfmihlh.0_7_0_0\src\manifest.json (29 ms)
+[2025-05-08 09:43:47] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\BOOKMARK-akmaldiojcdmijjdgahboemcgbfmihlh.0_7_0_0\src\popup.js
+[2025-05-08 09:43:47] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\BOOKMARK-akmaldiojcdmijjdgahboemcgbfmihlh.0_7_0_0\src\popup.js (106 ms)
+[2025-05-08 09:43:47] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\background.js
+[2025-05-08 09:43:47] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\background.js (532 ms)
+[2025-05-08 09:43:47] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\background1.js
+[2025-05-08 09:43:48] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\background1.js (416 ms)
+[2025-05-08 09:43:48] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\content.js
+[2025-05-08 09:43:49] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\content.js (647 ms)
+[2025-05-08 09:43:49] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\crypto.js
+[2025-05-08 09:43:50] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\crypto.js (1186 ms)
+[2025-05-08 09:43:50] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\ky.js
+[2025-05-08 09:43:50] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\ky.js (203 ms)
+[2025-05-08 09:43:50] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\manifest.json
+[2025-05-08 09:43:50] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\manifest.json (13 ms)
+[2025-05-08 09:43:50] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\sjcl.js
+[2025-05-08 09:43:51] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\sjcl.js (767 ms)
+[2025-05-08 09:43:51] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\Utils.js
+[2025-05-08 09:43:51] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\Utils.js (27 ms)
+[2025-05-08 09:43:51] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\worker_wrapper.js
+[2025-05-08 09:43:51] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0\src\worker_wrapper.js (13 ms)
+[2025-05-08 09:43:51] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\FORM-SEARCH-pkfehkjibljchopnmfifbeanijojgkgb.3_5_0_0\src\background.js
+[2025-05-08 09:43:51] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\FORM-SEARCH-pkfehkjibljchopnmfifbeanijojgkgb.3_5_0_0\src\background.js (42 ms)
+[2025-05-08 09:43:51] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\FORM-SEARCH-pkfehkjibljchopnmfifbeanijojgkgb.3_5_0_0\src\manifest.json
+[2025-05-08 09:43:51] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\FORM-SEARCH-pkfehkjibljchopnmfifbeanijojgkgb.3_5_0_0\src\manifest.json (11 ms)
+[2025-05-08 09:43:51] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0\src\background.87838840.js
+[2025-05-08 09:43:51] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0\src\background.87838840.js (654 ms)
+[2025-05-08 09:43:51] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0\src\content.00261377.js
+[2025-05-08 09:43:58] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0\src\content.00261377.js (6171 ms)
+[2025-05-08 09:43:58] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0\src\contentAli.899c5f46.js
+[2025-05-08 09:44:01] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0\src\contentAli.899c5f46.js (3850 ms)
+[2025-05-08 09:44:01] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0\src\contentShein.41183e58.js
+[2025-05-08 09:44:02] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0\src\contentShein.41183e58.js (43 ms)
+[2025-05-08 09:44:02] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0\src\manifest.json
+[2025-05-08 09:44:02] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0\src\manifest.json (44 ms)
+[2025-05-08 09:44:02] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\JS-SEARCH-noUI-SURL-gjnlgmpokfpkonbdfkjbihmliofkjeok.1_0_6_0\src\manifest.json
+[2025-05-08 09:44:02] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\JS-SEARCH-noUI-SURL-gjnlgmpokfpkonbdfkjbihmliofkjeok.1_0_6_0\src\manifest.json (47 ms)
+[2025-05-08 09:44:02] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\JS-SEARCH-ompmbcpalofeaelpfohpmpmjhjahgpbp.1_0_2_0\src\manifest.json
+[2025-05-08 09:44:02] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\JS-SEARCH-ompmbcpalofeaelpfohpmpmjhjahgpbp.1_0_2_0\src\manifest.json (32 ms)
+[2025-05-08 09:44:02] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\manifest.json
+[2025-05-08 09:44:02] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110\src\manifest.json (35 ms)
+[2025-05-08 09:44:02] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\SUMMARY-simplified-snippets\getAMethodCall-qval-and-encodeURI.js
+[2025-05-08 09:44:02] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\SUMMARY-simplified-snippets\getAMethodCall-qval-and-encodeURI.js (60 ms)
+[2025-05-08 09:44:02] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\SUMMARY-simplified-snippets\getAnArgument-encodeURI-multipleSinks-search.js
+[2025-05-08 09:44:02] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\SUMMARY-simplified-snippets\getAnArgument-encodeURI-multipleSinks-search.js (54 ms)
+[2025-05-08 09:44:02] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\SUMMARY-simplified-snippets\getAParameter-react-functionbody-chrome.tabs.create.js
+[2025-05-08 09:44:02] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\SUMMARY-simplified-snippets\getAParameter-react-functionbody-chrome.tabs.create.js (67 ms)
+[2025-05-08 09:44:02] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\SUMMARY-simplified-snippets\propWrite-search.js
+[2025-05-08 09:44:02] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\SUMMARY-simplified-snippets\propWrite-search.js (40 ms)
+[2025-05-08 09:44:02] [build-stdout] Extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\SUMMARY-simplified-snippets\yield-search.js
+[2025-05-08 09:44:02] [build-stdout] Done extracting C:\Users\a8096\OneDrive\Dokument\codex-example-extensions\taint-steps\SUMMARY-simplified-snippets\yield-search.js (39 ms)
+[2025-05-08 09:44:02] [build-stderr] No externs trap cache found
+[2025-05-08 09:44:02] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\es\es2016.js
+[2025-05-08 09:44:02] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\es\es2016.js (41 ms)
+[2025-05-08 09:44:02] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\es\es2017.js
+[2025-05-08 09:44:02] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\es\es2017.js (40 ms)
+[2025-05-08 09:44:02] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\es\es3.js
+[2025-05-08 09:44:02] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\es\es3.js (436 ms)
+[2025-05-08 09:44:02] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\es\es5.js
+[2025-05-08 09:44:03] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\es\es5.js (134 ms)
+[2025-05-08 09:44:03] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\es\es6.js
+[2025-05-08 09:44:03] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\es\es6.js (352 ms)
+[2025-05-08 09:44:03] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\es\es6_collections.js
+[2025-05-08 09:44:03] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\es\es6_collections.js (112 ms)
+[2025-05-08 09:44:03] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\es\intl.js
+[2025-05-08 09:44:03] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\es\intl.js (118 ms)
+[2025-05-08 09:44:03] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\es\proxy.js
+[2025-05-08 09:44:03] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\es\proxy.js (54 ms)
+[2025-05-08 09:44:03] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\lib\bdd.js
+[2025-05-08 09:44:03] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\lib\bdd.js (84 ms)
+[2025-05-08 09:44:03] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\lib\jquery-3.2.js
+[2025-05-08 09:44:04] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\lib\jquery-3.2.js (605 ms)
+[2025-05-08 09:44:04] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\lib\should.js
+[2025-05-08 09:44:04] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\lib\should.js (114 ms)
+[2025-05-08 09:44:04] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\lib\vows.js
+[2025-05-08 09:44:04] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\lib\vows.js (83 ms)
+[2025-05-08 09:44:04] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\assert.js
+[2025-05-08 09:44:04] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\assert.js (80 ms)
+[2025-05-08 09:44:04] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\assert_legacy.js
+[2025-05-08 09:44:04] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\assert_legacy.js (35 ms)
+[2025-05-08 09:44:04] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\buffer.js
+[2025-05-08 09:44:04] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\buffer.js (65 ms)
+[2025-05-08 09:44:04] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\child_process.js
+[2025-05-08 09:44:05] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\child_process.js (160 ms)
+[2025-05-08 09:44:05] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\cluster.js
+[2025-05-08 09:44:05] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\cluster.js (235 ms)
+[2025-05-08 09:44:05] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\console.js
+[2025-05-08 09:44:05] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\console.js (51 ms)
+[2025-05-08 09:44:05] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\constants.js
+[2025-05-08 09:44:05] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\constants.js (268 ms)
+[2025-05-08 09:44:05] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\crypto.js
+[2025-05-08 09:44:05] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\crypto.js (180 ms)
+[2025-05-08 09:44:05] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\dgram.js
+[2025-05-08 09:44:05] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\dgram.js (97 ms)
+[2025-05-08 09:44:05] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\dns.js
+[2025-05-08 09:44:05] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\dns.js (129 ms)
+[2025-05-08 09:44:05] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\domain.js
+[2025-05-08 09:44:06] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\domain.js (104 ms)
+[2025-05-08 09:44:06] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\events.js
+[2025-05-08 09:44:06] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\events.js (91 ms)
+[2025-05-08 09:44:06] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\fs.js
+[2025-05-08 09:44:06] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\fs.js (388 ms)
+[2025-05-08 09:44:06] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\globals.js
+[2025-05-08 09:44:06] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\globals.js (325 ms)
+[2025-05-08 09:44:06] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\http.js
+[2025-05-08 09:44:07] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\http.js (172 ms)
+[2025-05-08 09:44:07] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\https.js
+[2025-05-08 09:44:07] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\https.js (113 ms)
+[2025-05-08 09:44:07] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\module.js
+[2025-05-08 09:44:07] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\module.js (81 ms)
+[2025-05-08 09:44:07] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\net.js
+[2025-05-08 09:44:07] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\net.js (157 ms)
+[2025-05-08 09:44:07] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\os.js
+[2025-05-08 09:44:07] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\os.js (118 ms)
+[2025-05-08 09:44:07] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\path.js
+[2025-05-08 09:44:07] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\path.js (121 ms)
+[2025-05-08 09:44:07] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\process.js
+[2025-05-08 09:44:07] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\process.js (68 ms)
+[2025-05-08 09:44:07] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\punycode.js
+[2025-05-08 09:44:07] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\punycode.js (77 ms)
+[2025-05-08 09:44:07] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\querystring.js
+[2025-05-08 09:44:07] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\querystring.js (81 ms)
+[2025-05-08 09:44:07] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\readline.js
+[2025-05-08 09:44:07] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\readline.js (88 ms)
+[2025-05-08 09:44:07] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\repl.js
+[2025-05-08 09:44:08] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\repl.js (69 ms)
+[2025-05-08 09:44:08] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\stream.js
+[2025-05-08 09:44:08] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\stream.js (174 ms)
+[2025-05-08 09:44:08] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\string_decoder.js
+[2025-05-08 09:44:08] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\string_decoder.js (66 ms)
+[2025-05-08 09:44:08] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\sys.js
+[2025-05-08 09:44:08] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\sys.js (50 ms)
+[2025-05-08 09:44:08] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\timers.js
+[2025-05-08 09:44:08] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\timers.js (68 ms)
+[2025-05-08 09:44:08] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\tls.js
+[2025-05-08 09:44:08] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\tls.js (112 ms)
+[2025-05-08 09:44:08] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\tty.js
+[2025-05-08 09:44:08] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\tty.js (67 ms)
+[2025-05-08 09:44:08] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\url.js
+[2025-05-08 09:44:08] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\url.js (78 ms)
+[2025-05-08 09:44:08] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\util.js
+[2025-05-08 09:44:08] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\util.js (117 ms)
+[2025-05-08 09:44:08] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\v8.js
+[2025-05-08 09:44:08] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\v8.js (85 ms)
+[2025-05-08 09:44:08] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\vm.js
+[2025-05-08 09:44:08] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\vm.js (104 ms)
+[2025-05-08 09:44:08] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\zlib.js
+[2025-05-08 09:44:09] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\nodejs\zlib.js (121 ms)
+[2025-05-08 09:44:09] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\vm\jsshell.js
+[2025-05-08 09:44:09] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\vm\jsshell.js (160 ms)
+[2025-05-08 09:44:09] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\vm\rhino.js
+[2025-05-08 09:44:09] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\vm\rhino.js (59 ms)
+[2025-05-08 09:44:09] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\vm\spidermonkey.js
+[2025-05-08 09:44:09] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\vm\spidermonkey.js (50 ms)
+[2025-05-08 09:44:09] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\vm\v8.js
+[2025-05-08 09:44:09] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\vm\v8.js (98 ms)
+[2025-05-08 09:44:09] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\chrome.js
+[2025-05-08 09:44:09] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\chrome.js (139 ms)
+[2025-05-08 09:44:09] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\fetchapi.js
+[2025-05-08 09:44:09] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\fetchapi.js (124 ms)
+[2025-05-08 09:44:09] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\fileapi.js
+[2025-05-08 09:44:09] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\fileapi.js (240 ms)
+[2025-05-08 09:44:10] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\flash.js
+[2025-05-08 09:44:10] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\flash.js (197 ms)
+[2025-05-08 09:44:10] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\gecko_css.js
+[2025-05-08 09:44:10] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\gecko_css.js (116 ms)
+[2025-05-08 09:44:10] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\gecko_dom.js
+[2025-05-08 09:44:10] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\gecko_dom.js (182 ms)
+[2025-05-08 09:44:10] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\gecko_event.js
+[2025-05-08 09:44:10] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\gecko_event.js (55 ms)
+[2025-05-08 09:44:10] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\gecko_ext.js
+[2025-05-08 09:44:10] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\gecko_ext.js (43 ms)
+[2025-05-08 09:44:10] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\gecko_xml.js
+[2025-05-08 09:44:10] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\gecko_xml.js (58 ms)
+[2025-05-08 09:44:10] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\html5.js
+[2025-05-08 09:44:11] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\html5.js (728 ms)
+[2025-05-08 09:44:11] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\ie_css.js
+[2025-05-08 09:44:11] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\ie_css.js (89 ms)
+[2025-05-08 09:44:11] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\ie_dom.js
+[2025-05-08 09:44:11] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\ie_dom.js (221 ms)
+[2025-05-08 09:44:11] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\ie_event.js
+[2025-05-08 09:44:11] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\ie_event.js (92 ms)
+[2025-05-08 09:44:11] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\ie_vml.js
+[2025-05-08 09:44:11] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\ie_vml.js (44 ms)
+[2025-05-08 09:44:11] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\intl.js
+[2025-05-08 09:44:11] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\intl.js (86 ms)
+[2025-05-08 09:44:11] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\iphone.js
+[2025-05-08 09:44:12] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\iphone.js (85 ms)
+[2025-05-08 09:44:12] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\mediasource.js
+[2025-05-08 09:44:12] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\mediasource.js (84 ms)
+[2025-05-08 09:44:12] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\page_visibility.js
+[2025-05-08 09:44:12] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\page_visibility.js (52 ms)
+[2025-05-08 09:44:12] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\streamsapi.js
+[2025-05-08 09:44:12] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\streamsapi.js (108 ms)
+[2025-05-08 09:44:12] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\url.js
+[2025-05-08 09:44:12] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\url.js (63 ms)
+[2025-05-08 09:44:12] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_anim_timing.js
+[2025-05-08 09:44:12] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_anim_timing.js (59 ms)
+[2025-05-08 09:44:12] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_batterystatus.js
+[2025-05-08 09:44:12] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_batterystatus.js (43 ms)
+[2025-05-08 09:44:12] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_css.js
+[2025-05-08 09:44:12] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_css.js (291 ms)
+[2025-05-08 09:44:12] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_css3d.js
+[2025-05-08 09:44:12] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_css3d.js (82 ms)
+[2025-05-08 09:44:12] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_device_sensor_event.js
+[2025-05-08 09:44:12] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_device_sensor_event.js (62 ms)
+[2025-05-08 09:44:12] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_dom1.js
+[2025-05-08 09:44:13] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_dom1.js (156 ms)
+[2025-05-08 09:44:13] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_dom2.js
+[2025-05-08 09:44:13] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_dom2.js (298 ms)
+[2025-05-08 09:44:13] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_dom3.js
+[2025-05-08 09:44:13] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_dom3.js (208 ms)
+[2025-05-08 09:44:13] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_dom4.js
+[2025-05-08 09:44:13] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_dom4.js (60 ms)
+[2025-05-08 09:44:13] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_elementtraversal.js
+[2025-05-08 09:44:13] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_elementtraversal.js (70 ms)
+[2025-05-08 09:44:13] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_encoding.js
+[2025-05-08 09:44:13] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_encoding.js (59 ms)
+[2025-05-08 09:44:13] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_event.js
+[2025-05-08 09:44:13] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_event.js (111 ms)
+[2025-05-08 09:44:13] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_event3.js
+[2025-05-08 09:44:13] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_event3.js (41 ms)
+[2025-05-08 09:44:13] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_gamepad.js
+[2025-05-08 09:44:13] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_gamepad.js (58 ms)
+[2025-05-08 09:44:13] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_geolocation.js
+[2025-05-08 09:44:14] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_geolocation.js (91 ms)
+[2025-05-08 09:44:14] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_indexeddb.js
+[2025-05-08 09:44:14] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_indexeddb.js (193 ms)
+[2025-05-08 09:44:14] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_midi.js
+[2025-05-08 09:44:14] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_midi.js (110 ms)
+[2025-05-08 09:44:14] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_navigation_timing.js
+[2025-05-08 09:44:14] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_navigation_timing.js (94 ms)
+[2025-05-08 09:44:14] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_permissions.js
+[2025-05-08 09:44:14] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_permissions.js (72 ms)
+[2025-05-08 09:44:14] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_pointer_events.js
+[2025-05-08 09:44:14] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_pointer_events.js (63 ms)
+[2025-05-08 09:44:14] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_range.js
+[2025-05-08 09:44:14] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_range.js (94 ms)
+[2025-05-08 09:44:14] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_requestidlecallback.js
+[2025-05-08 09:44:14] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_requestidlecallback.js (57 ms)
+[2025-05-08 09:44:14] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_rtc.js
+[2025-05-08 09:44:15] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_rtc.js (315 ms)
+[2025-05-08 09:44:15] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_screen_orientation.js
+[2025-05-08 09:44:15] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_screen_orientation.js (46 ms)
+[2025-05-08 09:44:15] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_selectors.js
+[2025-05-08 09:44:15] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_selectors.js (65 ms)
+[2025-05-08 09:44:15] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_serviceworker.js
+[2025-05-08 09:44:15] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_serviceworker.js (129 ms)
+[2025-05-08 09:44:15] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_touch_event.js
+[2025-05-08 09:44:15] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_touch_event.js (89 ms)
+[2025-05-08 09:44:15] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_webcrypto.js
+[2025-05-08 09:44:15] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_webcrypto.js (90 ms)
+[2025-05-08 09:44:15] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_xml.js
+[2025-05-08 09:44:15] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\w3c_xml.js (116 ms)
+[2025-05-08 09:44:15] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\webgl.js
+[2025-05-08 09:44:16] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\webgl.js (479 ms)
+[2025-05-08 09:44:16] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\webkit_css.js
+[2025-05-08 09:44:16] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\webkit_css.js (154 ms)
+[2025-05-08 09:44:16] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\webkit_dom.js
+[2025-05-08 09:44:16] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\webkit_dom.js (67 ms)
+[2025-05-08 09:44:16] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\webkit_event.js
+[2025-05-08 09:44:16] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\webkit_event.js (35 ms)
+[2025-05-08 09:44:16] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\webkit_notifications.js
+[2025-05-08 09:44:16] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\webkit_notifications.js (74 ms)
+[2025-05-08 09:44:16] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\webkit_usercontent.js
+[2025-05-08 09:44:16] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\webkit_usercontent.js (46 ms)
+[2025-05-08 09:44:16] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\webstorage.js
+[2025-05-08 09:44:16] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\webstorage.js (62 ms)
+[2025-05-08 09:44:16] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\whatwg_encoding.js
+[2025-05-08 09:44:16] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\whatwg_encoding.js (51 ms)
+[2025-05-08 09:44:16] [build-stdout] Extracting C:\tools\codeql\javascript\tools\data\externs\web\window.js
+[2025-05-08 09:44:16] [build-stdout] Done extracting C:\tools\codeql\javascript\tools\data\externs\web\window.js (58 ms)
+[2025-05-08 09:44:16] Plumbing command codeql database trace-command completed.
+[2025-05-08 09:44:16] [PROGRESS] database create> Finalizing database at C:\Users\a8096\OneDrive\桌面\Malicious-Extensions-Detection\malicious-extensions-db.
+[2025-05-08 09:44:16] Running plumbing command: codeql database finalize --no-db-cluster -- C:\Users\a8096\OneDrive\桌面\Malicious-Extensions-Detection\malicious-extensions-db
+[2025-05-08 09:44:16] [PROGRESS] database finalize> Running TRAP import for CodeQL database at C:\Users\a8096\OneDrive\桌面\Malicious-Extensions-Detection\malicious-extensions-db...
+[2025-05-08 09:44:16] Running plumbing command: codeql dataset import --dbscheme=C:\tools\codeql\javascript\semmlecode.javascript.dbscheme -- C:\Users\a8096\OneDrive\桌面\Malicious-Extensions-Detection\malicious-extensions-db\db-javascript C:\Users\a8096\OneDrive\桌面\Malicious-Extensions-Detection\malicious-extensions-db\trap\javascript
+[2025-05-08 09:44:17] Clearing disk cache since the version file C:\Users\a8096\OneDrive\桌面\Malicious-Extensions-Detection\malicious-extensions-db\db-javascript\default\cache\version does not exist
+[2025-05-08 09:44:17] Tuple pool not found. Clearing relations with cached strings
+[2025-05-08 09:44:17] Trimming disk cache at C:\Users\a8096\OneDrive\桌面\Malicious-Extensions-Detection\malicious-extensions-db\db-javascript\default\cache in mode clear.
+[2025-05-08 09:44:17] Sequence stamp origin is -6052001233933248206
+[2025-05-08 09:44:17] Pausing evaluation to hard-clear memory at sequence stamp o+0
+[2025-05-08 09:44:17] Unpausing evaluation
+[2025-05-08 09:44:17] Pausing evaluation to quickly trim disk at sequence stamp o+1
+[2025-05-08 09:44:17] Unpausing evaluation
+[2025-05-08 09:44:17] Pausing evaluation to zealously trim disk at sequence stamp o+2
+[2025-05-08 09:44:17] Unpausing evaluation
+[2025-05-08 09:44:17] Trimming completed (16ms): Purged everything.
+[2025-05-08 09:44:17] Scanning for files in C:\Users\a8096\OneDrive\桌面\Malicious-Extensions-Detection\malicious-extensions-db\trap\javascript
+[2025-05-08 09:44:17] Found 272 TRAP files (90.97 MiB)
+[2025-05-08 09:44:17] [PROGRESS] dataset import> Importing TRAP files
+[2025-05-08 09:44:18] Importing background.js.trap.gz (1 of 272)
+[2025-05-08 09:44:19] Importing manifest.json.trap.gz (2 of 272)
+[2025-05-08 09:44:19] Importing popup.html.trap.gz (3 of 272)
+[2025-05-08 09:44:19] Importing popup.js.trap.gz (4 of 272)
+[2025-05-08 09:44:19] Importing Utils.js.trap.gz (5 of 272)
+[2025-05-08 09:44:19] Importing index.733e49c2.js.trap.gz (6 of 272)
+[2025-05-08 09:44:20] Importing main.1ab60b14.js.trap.gz (7 of 272)
+[2025-05-08 09:44:20] Importing options.d30db539.js.trap.gz (8 of 272)
+[2025-05-08 09:44:20] Importing vendor.db840a70.js.trap.gz (9 of 272)
+[2025-05-08 09:44:23] Importing background.js.trap.gz (10 of 272)
+[2025-05-08 09:44:23] Importing background1.js.trap.gz (11 of 272)
+[2025-05-08 09:44:23] Importing content.js.trap.gz (12 of 272)
+[2025-05-08 09:44:24] Importing crypto.js.trap.gz (13 of 272)
+[2025-05-08 09:44:24] Importing ky.js.trap.gz (14 of 272)
+[2025-05-08 09:44:24] Importing manifest.json.trap.gz (15 of 272)
+[2025-05-08 09:44:24] Importing options.html.trap.gz (16 of 272)
+[2025-05-08 09:44:24] Importing popup.html.trap.gz (17 of 272)
+[2025-05-08 09:44:24] Importing sjcl.js.trap.gz (18 of 272)
+[2025-05-08 09:44:25] Importing tab.html.trap.gz (19 of 272)
+[2025-05-08 09:44:25] Importing worker_wrapper.js.trap.gz (20 of 272)
+[2025-05-08 09:44:25] Importing background.js.trap.gz (21 of 272)
+[2025-05-08 09:44:25] Importing main.js.trap.gz (22 of 272)
+[2025-05-08 09:44:25] Importing manifest.json.trap.gz (23 of 272)
+[2025-05-08 09:44:25] Importing search.html.trap.gz (24 of 272)
+[2025-05-08 09:44:25] Importing background.87838840.js.trap.gz (25 of 272)
+[2025-05-08 09:44:25] Importing content.00261377.js.trap.gz (26 of 272)
+[2025-05-08 09:44:28] Importing contentAli.899c5f46.js.trap.gz (27 of 272)
+[2025-05-08 09:44:30] Importing contentShein.41183e58.js.trap.gz (28 of 272)
+[2025-05-08 09:44:30] Importing balenced.js.trap.gz (29 of 272)
+[2025-05-08 09:44:30] Importing compare-versions.js.trap.gz (30 of 272)
+[2025-05-08 09:44:30] Importing manifest.json.trap.gz (31 of 272)
+[2025-05-08 09:44:30] Importing newtab.html.trap.gz (32 of 272)
+[2025-05-08 09:44:30] Importing background.js.trap.gz (33 of 272)
+[2025-05-08 09:44:30] Importing logic.js.trap.gz (34 of 272)
+[2025-05-08 09:44:30] Importing tab.js.trap.gz (35 of 272)
+[2025-05-08 09:44:30] Importing jquery.js.trap.gz (36 of 272)
+[2025-05-08 09:44:31] Importing jqueryui.js.trap.gz (37 of 272)
+[2025-05-08 09:44:33] Importing manifest.json.trap.gz (38 of 272)
+[2025-05-08 09:44:33] Importing runtime.js.trap.gz (39 of 272)
+[2025-05-08 09:44:33] Importing manifest.json.trap.gz (40 of 272)
+[2025-05-08 09:44:33] Importing main.html.trap.gz (41 of 272)
+[2025-05-08 09:44:33] Importing script.js.trap.gz (42 of 272)
+[2025-05-08 09:44:33] Importing contextMenus.js.trap.gz (43 of 272)
+[2025-05-08 09:44:33] Importing ext.js.trap.gz (44 of 272)
+[2025-05-08 09:44:33] Importing index.html.trap.gz (45 of 272)
+[2025-05-08 09:44:33] Importing listeners.js.trap.gz (46 of 272)
+[2025-05-08 09:44:33] Importing omni.js.trap.gz (47 of 272)
+[2025-05-08 09:44:33] Importing search.js.trap.gz (48 of 272)
+[2025-05-08 09:44:33] Importing settings.js.trap.gz (49 of 272)
+[2025-05-08 09:44:33] Importing startup.js.trap.gz (50 of 272)
+[2025-05-08 09:44:33] Importing manifest.json.trap.gz (51 of 272)
+[2025-05-08 09:44:33] Importing options.html.trap.gz (52 of 272)
+[2025-05-08 09:44:33] Importing options.js.trap.gz (53 of 272)
+[2025-05-08 09:44:33] Importing tabContent.js.trap.gz (54 of 272)
+[2025-05-08 09:44:33] Importing popup.html.trap.gz (55 of 272)
+[2025-05-08 09:44:33] Importing popup.js.trap.gz (56 of 272)
+[2025-05-08 09:44:33] Importing tabContent.js.trap.gz (57 of 272)
+[2025-05-08 09:44:33] Importing prompt.js.trap.gz (58 of 272)
+[2025-05-08 09:44:33] Importing propWrite-search.js.trap.gz (59 of 272)
+[2025-05-08 09:44:33] Importing import.html.trap.gz (60 of 272)
+[2025-05-08 09:44:33] Importing index.html.trap.gz (61 of 272)
+[2025-05-08 09:44:33] Importing background.js.trap.gz (62 of 272)
+[2025-05-08 09:44:34] Importing chunk-2d0a402b.2ef82da2.js.trap.gz (63 of 272)
+[2025-05-08 09:44:34] Importing chunk-2d0b24d9.d2273d8d.js.trap.gz (64 of 272)
+[2025-05-08 09:44:34] Importing chunk-2d0b66fa.dff5ba3a.js.trap.gz (65 of 272)
+[2025-05-08 09:44:34] Importing chunk-2d0b9196.c01319be.js.trap.gz (66 of 272)
+[2025-05-08 09:44:34] Importing chunk-2d0ba6b9.dc1f46fe.js.trap.gz (67 of 272)
+[2025-05-08 09:44:34] Importing chunk-2d0ba756.5b4eb808.js.trap.gz (68 of 272)
+[2025-05-08 09:44:34] Importing chunk-2d0bac2f.25b21b73.js.trap.gz (69 of 272)
+[2025-05-08 09:44:34] Importing chunk-2d0c073f.0cb17801.js.trap.gz (70 of 272)
+[2025-05-08 09:44:34] Importing chunk-2d0c0a17.4625271b.js.trap.gz (71 of 272)
+[2025-05-08 09:44:34] Importing chunk-2d0c4324.9399e7b0.js.trap.gz (72 of 272)
+[2025-05-08 09:44:34] Importing chunk-2d0c7930.df875be2.js.trap.gz (73 of 272)
+[2025-05-08 09:44:34] Importing chunk-2d0cbd04.28e87e87.js.trap.gz (74 of 272)
+[2025-05-08 09:44:35] Importing chunk-2d0cc3fb.72476e8c.js.trap.gz (75 of 272)
+[2025-05-08 09:44:35] Importing chunk-2d0ce83a.5f9628cb.js.trap.gz (76 of 272)
+[2025-05-08 09:44:35] Importing chunk-2d0ceeb7.453dfdef.js.trap.gz (77 of 272)
+[2025-05-08 09:44:35] Importing chunk-2d0d6334.0b31ffdc.js.trap.gz (78 of 272)
+[2025-05-08 09:44:35] Importing chunk-2d0d6af4.e8fb44cb.js.trap.gz (79 of 272)
+[2025-05-08 09:44:35] Importing chunk-2d0d72e1.bdb768d2.js.trap.gz (80 of 272)
+[2025-05-08 09:44:35] Importing chunk-2d0e2537.b18cb260.js.trap.gz (81 of 272)
+[2025-05-08 09:44:35] Importing chunk-2d0e9aab.e55fe3e8.js.trap.gz (82 of 272)
+[2025-05-08 09:44:35] Importing chunk-2d213369.5bbb9457.js.trap.gz (83 of 272)
+[2025-05-08 09:44:35] Importing chunk-2d216be4.e1aa4249.js.trap.gz (84 of 272)
+[2025-05-08 09:44:35] Importing chunk-2d217177.2f985ccb.js.trap.gz (85 of 272)
+[2025-05-08 09:44:35] Importing chunk-2d217363.dbe960fa.js.trap.gz (86 of 272)
+[2025-05-08 09:44:35] Importing chunk-2d219ff8.a8f35cbb.js.trap.gz (87 of 272)
+[2025-05-08 09:44:35] Importing chunk-2d221485.c1d1cdf5.js.trap.gz (88 of 272)
+[2025-05-08 09:44:35] Importing chunk-2d221b5b.bd35394c.js.trap.gz (89 of 272)
+[2025-05-08 09:44:35] Importing chunk-2d225665.04fd8a3f.js.trap.gz (90 of 272)
+[2025-05-08 09:44:35] Importing chunk-2d2262ad.98ed41bc.js.trap.gz (91 of 272)
+[2025-05-08 09:44:35] Importing chunk-2d229227.8a050403.js.trap.gz (92 of 272)
+[2025-05-08 09:44:35] Importing chunk-2d22a107.f3743d81.js.trap.gz (93 of 272)
+[2025-05-08 09:44:35] Importing chunk-2d22e0ba.959306ae.js.trap.gz (94 of 272)
+[2025-05-08 09:44:35] Importing chunk-common.d3333ef8.js.trap.gz (95 of 272)
+[2025-05-08 09:44:35] Importing chunk-vendors.81072308.js.trap.gz (96 of 272)
+[2025-05-08 09:44:38] Importing import.70b4045a.js.trap.gz (97 of 272)
+[2025-05-08 09:44:38] Importing new_tab.be8d9eaa.js.trap.gz (98 of 272)
+[2025-05-08 09:44:38] Importing popup.31498d16.js.trap.gz (99 of 272)
+[2025-05-08 09:44:38] Importing welcome.836f1d84.js.trap.gz (100 of 272)
+[2025-05-08 09:44:39] Importing manifest.json.trap.gz (101 of 272)
+[2025-05-08 09:44:39] Importing new_tab.html.trap.gz (102 of 272)
+[2025-05-08 09:44:39] Importing popup.html.trap.gz (103 of 272)
+[2025-05-08 09:44:39] Importing welcome.html.trap.gz (104 of 272)
+[2025-05-08 09:44:39] Importing encodeURI-multipleSinks-search.js.trap.gz (105 of 272)
+[2025-05-08 09:44:39] Importing background.js.trap.gz (106 of 272)
+[2025-05-08 09:44:39] Importing jquery-3.4.1.js.trap.gz (107 of 272)
+[2025-05-08 09:44:40] Importing manifest.json.trap.gz (108 of 272)
+[2025-05-08 09:44:40] Importing newtab.html.trap.gz (109 of 272)
+[2025-05-08 09:44:40] Importing newtab.js.trap.gz (110 of 272)
+[2025-05-08 09:44:40] Importing getAnArgument-encodeURI-multipleSinks-search.js.trap.gz (111 of 272)
+[2025-05-08 09:44:40] Importing index.html.trap.gz (112 of 272)
+[2025-05-08 09:44:40] Importing bg.js.trap.gz (113 of 272)
+[2025-05-08 09:44:40] Importing helpers.js.trap.gz (114 of 272)
+[2025-05-08 09:44:40] Importing search.js.trap.gz (115 of 272)
+[2025-05-08 09:44:40] Importing wp.js.trap.gz (116 of 272)
+[2025-05-08 09:44:40] Importing manifest.json.trap.gz (117 of 272)
+[2025-05-08 09:44:40] Importing UI-URL.js.trap.gz (118 of 272)
+[2025-05-08 09:44:40] Importing getAParameter-react-functionbody-chrome.tabs.create.js.trap.gz (119 of 272)
+[2025-05-08 09:44:40] Importing background.js.trap.gz (120 of 272)
+[2025-05-08 09:44:40] Importing contentScript.js.trap.gz (121 of 272)
+[2025-05-08 09:44:40] Importing manifest.json.trap.gz (122 of 272)
+[2025-05-08 09:44:40] Importing options.html.trap.gz (123 of 272)
+[2025-05-08 09:44:40] Importing options.js.trap.gz (124 of 272)
+[2025-05-08 09:44:40] Importing popup.html.trap.gz (125 of 272)
+[2025-05-08 09:44:40] Importing popup.js.trap.gz (126 of 272)
+[2025-05-08 09:44:40] Importing yield-search.js.trap.gz (127 of 272)
+[2025-05-08 09:44:40] Importing 18.js.trap.gz (128 of 272)
+[2025-05-08 09:44:41] Importing 313.js.trap.gz (129 of 272)
+[2025-05-08 09:44:43] Importing 382.js.trap.gz (130 of 272)
+[2025-05-08 09:44:44] Importing 480.js.trap.gz (131 of 272)
+[2025-05-08 09:44:44] Importing 486.js.trap.gz (132 of 272)
+[2025-05-08 09:44:45] Importing 554.js.trap.gz (133 of 272)
+[2025-05-08 09:44:45] Importing 893.js.trap.gz (134 of 272)
+[2025-05-08 09:44:45] Importing 981.js.trap.gz (135 of 272)
+[2025-05-08 09:44:45] Importing background.js.trap.gz (136 of 272)
+[2025-05-08 09:44:46] Importing content_script.js.trap.gz (137 of 272)
+[2025-05-08 09:44:46] Importing iframe_script.js.trap.gz (138 of 272)
+[2025-05-08 09:44:46] Importing inject.js.trap.gz (139 of 272)
+[2025-05-08 09:44:46] Importing keyword_analysis.html.trap.gz (140 of 272)
+[2025-05-08 09:44:46] Importing keyword_analysis.js.trap.gz (141 of 272)
+[2025-05-08 09:44:46] Importing keyword_analysis_script.js.trap.gz (142 of 272)
+[2025-05-08 09:44:46] Importing manifest.json.trap.gz (143 of 272)
+[2025-05-08 09:44:46] Importing margin_calculator.html.trap.gz (144 of 272)
+[2025-05-08 09:44:46] Importing margin_calculator.js.trap.gz (145 of 272)
+[2025-05-08 09:44:46] Importing margin_calculator_script.js.trap.gz (146 of 272)
+[2025-05-08 09:44:46] Importing options.html.trap.gz (147 of 272)
+[2025-05-08 09:44:46] Importing options.js.trap.gz (148 of 272)
+[2025-05-08 09:44:46] Importing parser.js.trap.gz (149 of 272)
+[2025-05-08 09:44:46] Importing popup.html.trap.gz (150 of 272)
+[2025-05-08 09:44:46] Importing popup.js.trap.gz (151 of 272)
+[2025-05-08 09:44:46] Importing product_analysis.html.trap.gz (152 of 272)
+[2025-05-08 09:44:46] Importing product_analysis.js.trap.gz (153 of 272)
+[2025-05-08 09:44:46] Importing product_analysis_extracting_page.html.trap.gz (154 of 272)
+[2025-05-08 09:44:46] Importing product_analysis_extracting_page.js.trap.gz (155 of 272)
+[2025-05-08 09:44:47] Importing product_analysis_script.js.trap.gz (156 of 272)
+[2025-05-08 09:44:47] Importing getAMethodCall-qval-and-encodeURI.js.trap.gz (157 of 272)
+[2025-05-08 09:44:47] Importing getAParameter-react-functionbody-chrome.tabs.create.js.trap.gz (158 of 272)
+[2025-05-08 09:44:47] Importing getAnArgument-encodeURI-multipleSinks-search.js.trap.gz (159 of 272)
+[2025-05-08 09:44:47] Importing propWrite-search.js.trap.gz (160 of 272)
+[2025-05-08 09:44:47] Importing yield-search.js.trap.gz (161 of 272)
+[2025-05-08 09:44:47] Importing es2016.js.trap.gz (162 of 272)
+[2025-05-08 09:44:47] Importing es2017.js.trap.gz (163 of 272)
+[2025-05-08 09:44:47] Importing es3.js.trap.gz (164 of 272)
+[2025-05-08 09:44:47] Importing es5.js.trap.gz (165 of 272)
+[2025-05-08 09:44:47] Importing es6.js.trap.gz (166 of 272)
+[2025-05-08 09:44:47] Importing es6_collections.js.trap.gz (167 of 272)
+[2025-05-08 09:44:47] Importing intl.js.trap.gz (168 of 272)
+[2025-05-08 09:44:47] Importing proxy.js.trap.gz (169 of 272)
+[2025-05-08 09:44:47] Importing bdd.js.trap.gz (170 of 272)
+[2025-05-08 09:44:47] Importing jquery-3.2.js.trap.gz (171 of 272)
+[2025-05-08 09:44:47] Importing should.js.trap.gz (172 of 272)
+[2025-05-08 09:44:47] Importing vows.js.trap.gz (173 of 272)
+[2025-05-08 09:44:47] Importing assert.js.trap.gz (174 of 272)
+[2025-05-08 09:44:47] Importing assert_legacy.js.trap.gz (175 of 272)
+[2025-05-08 09:44:47] Importing buffer.js.trap.gz (176 of 272)
+[2025-05-08 09:44:47] Importing child_process.js.trap.gz (177 of 272)
+[2025-05-08 09:44:47] Importing cluster.js.trap.gz (178 of 272)
+[2025-05-08 09:44:47] Importing console.js.trap.gz (179 of 272)
+[2025-05-08 09:44:47] Importing constants.js.trap.gz (180 of 272)
+[2025-05-08 09:44:47] Importing crypto.js.trap.gz (181 of 272)
+[2025-05-08 09:44:47] Importing dgram.js.trap.gz (182 of 272)
+[2025-05-08 09:44:47] Importing dns.js.trap.gz (183 of 272)
+[2025-05-08 09:44:47] Importing domain.js.trap.gz (184 of 272)
+[2025-05-08 09:44:47] Importing events.js.trap.gz (185 of 272)
+[2025-05-08 09:44:47] Importing fs.js.trap.gz (186 of 272)
+[2025-05-08 09:44:48] Importing globals.js.trap.gz (187 of 272)
+[2025-05-08 09:44:48] Importing http.js.trap.gz (188 of 272)
+[2025-05-08 09:44:48] Importing https.js.trap.gz (189 of 272)
+[2025-05-08 09:44:48] Importing module.js.trap.gz (190 of 272)
+[2025-05-08 09:44:48] Importing net.js.trap.gz (191 of 272)
+[2025-05-08 09:44:48] Importing os.js.trap.gz (192 of 272)
+[2025-05-08 09:44:48] Importing path.js.trap.gz (193 of 272)
+[2025-05-08 09:44:48] Importing process.js.trap.gz (194 of 272)
+[2025-05-08 09:44:48] Importing punycode.js.trap.gz (195 of 272)
+[2025-05-08 09:44:48] Importing querystring.js.trap.gz (196 of 272)
+[2025-05-08 09:44:48] Importing readline.js.trap.gz (197 of 272)
+[2025-05-08 09:44:48] Importing repl.js.trap.gz (198 of 272)
+[2025-05-08 09:44:48] Importing stream.js.trap.gz (199 of 272)
+[2025-05-08 09:44:48] Importing string_decoder.js.trap.gz (200 of 272)
+[2025-05-08 09:44:48] Importing sys.js.trap.gz (201 of 272)
+[2025-05-08 09:44:48] Importing timers.js.trap.gz (202 of 272)
+[2025-05-08 09:44:48] Importing tls.js.trap.gz (203 of 272)
+[2025-05-08 09:44:48] Importing tty.js.trap.gz (204 of 272)
+[2025-05-08 09:44:48] Importing url.js.trap.gz (205 of 272)
+[2025-05-08 09:44:48] Importing util.js.trap.gz (206 of 272)
+[2025-05-08 09:44:48] Importing v8.js.trap.gz (207 of 272)
+[2025-05-08 09:44:48] Importing vm.js.trap.gz (208 of 272)
+[2025-05-08 09:44:48] Importing zlib.js.trap.gz (209 of 272)
+[2025-05-08 09:44:48] Importing jsshell.js.trap.gz (210 of 272)
+[2025-05-08 09:44:48] Importing rhino.js.trap.gz (211 of 272)
+[2025-05-08 09:44:48] Importing spidermonkey.js.trap.gz (212 of 272)
+[2025-05-08 09:44:48] Importing v8.js.trap.gz (213 of 272)
+[2025-05-08 09:44:48] Importing chrome.js.trap.gz (214 of 272)
+[2025-05-08 09:44:48] Importing fetchapi.js.trap.gz (215 of 272)
+[2025-05-08 09:44:48] Importing fileapi.js.trap.gz (216 of 272)
+[2025-05-08 09:44:48] Importing flash.js.trap.gz (217 of 272)
+[2025-05-08 09:44:48] Importing gecko_css.js.trap.gz (218 of 272)
+[2025-05-08 09:44:48] Importing gecko_dom.js.trap.gz (219 of 272)
+[2025-05-08 09:44:48] Importing gecko_event.js.trap.gz (220 of 272)
+[2025-05-08 09:44:48] Importing gecko_ext.js.trap.gz (221 of 272)
+[2025-05-08 09:44:48] Importing gecko_xml.js.trap.gz (222 of 272)
+[2025-05-08 09:44:48] Importing html5.js.trap.gz (223 of 272)
+[2025-05-08 09:44:49] Importing ie_css.js.trap.gz (224 of 272)
+[2025-05-08 09:44:49] Importing ie_dom.js.trap.gz (225 of 272)
+[2025-05-08 09:44:49] Importing ie_event.js.trap.gz (226 of 272)
+[2025-05-08 09:44:49] Importing ie_vml.js.trap.gz (227 of 272)
+[2025-05-08 09:44:49] Importing intl.js.trap.gz (228 of 272)
+[2025-05-08 09:44:49] Importing iphone.js.trap.gz (229 of 272)
+[2025-05-08 09:44:49] Importing mediasource.js.trap.gz (230 of 272)
+[2025-05-08 09:44:49] Importing page_visibility.js.trap.gz (231 of 272)
+[2025-05-08 09:44:49] Importing streamsapi.js.trap.gz (232 of 272)
+[2025-05-08 09:44:49] Importing url.js.trap.gz (233 of 272)
+[2025-05-08 09:44:49] Importing w3c_anim_timing.js.trap.gz (234 of 272)
+[2025-05-08 09:44:49] Importing w3c_batterystatus.js.trap.gz (235 of 272)
+[2025-05-08 09:44:49] Importing w3c_css.js.trap.gz (236 of 272)
+[2025-05-08 09:44:49] Importing w3c_css3d.js.trap.gz (237 of 272)
+[2025-05-08 09:44:49] Importing w3c_device_sensor_event.js.trap.gz (238 of 272)
+[2025-05-08 09:44:49] Importing w3c_dom1.js.trap.gz (239 of 272)
+[2025-05-08 09:44:49] Importing w3c_dom2.js.trap.gz (240 of 272)
+[2025-05-08 09:44:49] Importing w3c_dom3.js.trap.gz (241 of 272)
+[2025-05-08 09:44:49] Importing w3c_dom4.js.trap.gz (242 of 272)
+[2025-05-08 09:44:49] Importing w3c_elementtraversal.js.trap.gz (243 of 272)
+[2025-05-08 09:44:49] Importing w3c_encoding.js.trap.gz (244 of 272)
+[2025-05-08 09:44:49] Importing w3c_event.js.trap.gz (245 of 272)
+[2025-05-08 09:44:49] Importing w3c_event3.js.trap.gz (246 of 272)
+[2025-05-08 09:44:49] Importing w3c_gamepad.js.trap.gz (247 of 272)
+[2025-05-08 09:44:49] Importing w3c_geolocation.js.trap.gz (248 of 272)
+[2025-05-08 09:44:49] Importing w3c_indexeddb.js.trap.gz (249 of 272)
+[2025-05-08 09:44:49] Importing w3c_midi.js.trap.gz (250 of 272)
+[2025-05-08 09:44:49] Importing w3c_navigation_timing.js.trap.gz (251 of 272)
+[2025-05-08 09:44:49] Importing w3c_permissions.js.trap.gz (252 of 272)
+[2025-05-08 09:44:49] Importing w3c_pointer_events.js.trap.gz (253 of 272)
+[2025-05-08 09:44:49] Importing w3c_range.js.trap.gz (254 of 272)
+[2025-05-08 09:44:49] Importing w3c_requestidlecallback.js.trap.gz (255 of 272)
+[2025-05-08 09:44:49] Importing w3c_rtc.js.trap.gz (256 of 272)
+[2025-05-08 09:44:49] Importing w3c_screen_orientation.js.trap.gz (257 of 272)
+[2025-05-08 09:44:49] Importing w3c_selectors.js.trap.gz (258 of 272)
+[2025-05-08 09:44:49] Importing w3c_serviceworker.js.trap.gz (259 of 272)
+[2025-05-08 09:44:49] Importing w3c_touch_event.js.trap.gz (260 of 272)
+[2025-05-08 09:44:49] Importing w3c_webcrypto.js.trap.gz (261 of 272)
+[2025-05-08 09:44:50] Importing w3c_xml.js.trap.gz (262 of 272)
+[2025-05-08 09:44:50] Importing webgl.js.trap.gz (263 of 272)
+[2025-05-08 09:44:50] Importing webkit_css.js.trap.gz (264 of 272)
+[2025-05-08 09:44:50] Importing webkit_dom.js.trap.gz (265 of 272)
+[2025-05-08 09:44:50] Importing webkit_event.js.trap.gz (266 of 272)
+[2025-05-08 09:44:50] Importing webkit_notifications.js.trap.gz (267 of 272)
+[2025-05-08 09:44:50] Importing webkit_usercontent.js.trap.gz (268 of 272)
+[2025-05-08 09:44:50] Importing webstorage.js.trap.gz (269 of 272)
+[2025-05-08 09:44:50] Importing whatwg_encoding.js.trap.gz (270 of 272)
+[2025-05-08 09:44:50] Importing window.js.trap.gz (271 of 272)
+[2025-05-08 09:44:50] Importing metadata.trap.gz (272 of 272)
+[2025-05-08 09:44:50] [PROGRESS] dataset import> Merging relations
+[2025-05-08 09:44:50] Merging 1 fragment for 'files'.
+[2025-05-08 09:44:50] Merged 919 bytes for 'files'.
+[2025-05-08 09:44:50] Merging 1 fragment for 'folders'.
+[2025-05-08 09:44:50] Merged 324 bytes for 'folders'.
+[2025-05-08 09:44:50] Merging 1 fragment for 'containerparent'.
+[2025-05-08 09:44:50] Merged 1010 bytes for 'containerparent'.
+[2025-05-08 09:44:50] Merging 24 fragments for 'locations_default'.
+[2025-05-08 09:44:53] Merged 6712978 bytes (6.40 MiB) for 'locations_default'.
+[2025-05-08 09:44:53] Merging 26 fragments for 'hasLocation'.
+[2025-05-08 09:44:56] Merged 6007660 bytes (5.73 MiB) for 'hasLocation'.
+[2025-05-08 09:44:56] Merging 1 fragment for 'extraction_data'.
+[2025-05-08 09:44:56] Merged 1128 bytes (1.10 KiB) for 'extraction_data'.
+[2025-05-08 09:44:56] Merging 1 fragment for 'scopes'.
+[2025-05-08 09:44:56] Merged 36992 bytes (36.12 KiB) for 'scopes'.
+[2025-05-08 09:44:56] Merging 1 fragment for 'indentation'.
+[2025-05-08 09:44:56] Merged 109078 bytes (106.52 KiB) for 'indentation'.
+[2025-05-08 09:44:56] Merging 1 fragment for 'numlines'.
+[2025-05-08 09:44:56] Merged 2785 bytes (2.72 KiB) for 'numlines'.
+[2025-05-08 09:44:56] Merging 13 fragments for 'tokeninfo'.
+[2025-05-08 09:44:57] Merged 6397329 bytes (6.10 MiB) for 'tokeninfo'.
+[2025-05-08 09:44:57] Merging 1 fragment for 'toplevels'.
+[2025-05-08 09:44:57] Merged 471 bytes for 'toplevels'.
+[2025-05-08 09:44:57] Merging 1 fragment for 'variables'.
+[2025-05-08 09:44:57] Merged 314382 bytes (307.01 KiB) for 'variables'.
+[2025-05-08 09:44:57] Merging 2 fragments for 'stmts'.
+[2025-05-08 09:44:57] Merged 679103 bytes (663.19 KiB) for 'stmts'.
+[2025-05-08 09:44:57] Merging 2 fragments for 'stmt_containers'.
+[2025-05-08 09:44:57] Merged 219416 bytes (214.27 KiB) for 'stmt_containers'.
+[2025-05-08 09:44:57] Merging 9 fragments for 'exprs'.
+[2025-05-08 09:44:57] Merged 5987613 bytes (5.71 MiB) for 'exprs'.
+[2025-05-08 09:44:57] Merging 8 fragments for 'enclosing_stmt'.
+[2025-05-08 09:44:58] Merged 1025432 bytes (1001.40 KiB) for 'enclosing_stmt'.
+[2025-05-08 09:44:58] Merging 9 fragments for 'expr_containers'.
+[2025-05-08 09:44:58] Merged 986116 bytes (963.00 KiB) for 'expr_containers'.
+[2025-05-08 09:44:58] Merging 5 fragments for 'literals'.
+[2025-05-08 09:44:58] Merged 844271 bytes (824.48 KiB) for 'literals'.
+[2025-05-08 09:44:58] Merging 1 fragment for 'decl'.
+[2025-05-08 09:44:58] Merged 147641 bytes (144.18 KiB) for 'decl'.
+[2025-05-08 09:44:58] Merging 1 fragment for 'regexpterm'.
+[2025-05-08 09:44:58] Merged 251045 bytes (245.16 KiB) for 'regexpterm'.
+[2025-05-08 09:44:58] Merging 1 fragment for 'regexp_const_value'.
+[2025-05-08 09:44:58] Merged 117477 bytes (114.72 KiB) for 'regexp_const_value'.
+[2025-05-08 09:44:58] Merging 1 fragment for 'scopenodes'.
+[2025-05-08 09:44:58] Merged 57072 bytes (55.73 KiB) for 'scopenodes'.
+[2025-05-08 09:44:58] Merging 1 fragment for 'scopenesting'.
+[2025-05-08 09:44:59] Merged 60845 bytes (59.42 KiB) for 'scopenesting'.
+[2025-05-08 09:44:59] Merging 1 fragment for 'is_arguments_object'.
+[2025-05-08 09:44:59] Merged 19287 bytes (18.83 KiB) for 'is_arguments_object'.
+[2025-05-08 09:44:59] Merging 1 fragment for 'is_async'.
+[2025-05-08 09:44:59] Merged 199 bytes for 'is_async'.
+[2025-05-08 09:44:59] Merging 3 fragments for 'bind'.
+[2025-05-08 09:44:59] Merged 520037 bytes (507.85 KiB) for 'bind'.
+[2025-05-08 09:44:59] Merging 1 fragment for 'properties'.
+[2025-05-08 09:44:59] Merged 125358 bytes (122.42 KiB) for 'properties'.
+[2025-05-08 09:44:59] Merging 1 fragment for 'array_size'.
+[2025-05-08 09:44:59] Merged 9426 bytes (9.21 KiB) for 'array_size'.
+[2025-05-08 09:44:59] Merging 1 fragment for 'entry_cfg_node'.
+[2025-05-08 09:44:59] Merged 52628 bytes (51.39 KiB) for 'entry_cfg_node'.
+[2025-05-08 09:44:59] Merging 1 fragment for 'exit_cfg_node'.
+[2025-05-08 09:44:59] Merged 52628 bytes (51.39 KiB) for 'exit_cfg_node'.
+[2025-05-08 09:44:59] Merging 12 fragments for 'successor'.
+[2025-05-08 09:44:59] Merged 2504030 bytes (2.39 MiB) for 'successor'.
+[2025-05-08 09:44:59] Merging 1 fragment for 'guard_node'.
+[2025-05-08 09:44:59] Merged 265169 bytes (258.95 KiB) for 'guard_node'.
+[2025-05-08 09:44:59] Merging 1 fragment for 'filetype'.
+[2025-05-08 09:44:59] Merged 619 bytes for 'filetype'.
+[2025-05-08 09:44:59] Merging 1 fragment for 'extraction_time'.
+[2025-05-08 09:45:00] Merged 37232 bytes (36.36 KiB) for 'extraction_time'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'json'.
+[2025-05-08 09:45:00] Merged 3259 bytes (3.18 KiB) for 'json'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'json_locations'.
+[2025-05-08 09:45:00] Merged 1123 bytes (1.10 KiB) for 'json_locations'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'json_literals'.
+[2025-05-08 09:45:00] Merged 1478 bytes (1.44 KiB) for 'json_literals'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'json_properties'.
+[2025-05-08 09:45:00] Merged 1325 bytes (1.29 KiB) for 'json_properties'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'xmlElements'.
+[2025-05-08 09:45:00] Merged 2615 bytes (2.55 KiB) for 'xmlElements'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'xmllocations'.
+[2025-05-08 09:45:00] Merged 2963 bytes (2.89 KiB) for 'xmllocations'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'xmlAttrs'.
+[2025-05-08 09:45:00] Merged 6445 bytes (6.29 KiB) for 'xmlAttrs'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'is_greedy'.
+[2025-05-08 09:45:00] Merged 1212 bytes (1.18 KiB) for 'is_greedy'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'is_inverted'.
+[2025-05-08 09:45:00] Merged 215 bytes for 'is_inverted'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'is_capture'.
+[2025-05-08 09:45:00] Merged 1098 bytes (1.07 KiB) for 'is_capture'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'local_type_names'.
+[2025-05-08 09:45:00] Merged 588 bytes for 'local_type_names'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'typedecl'.
+[2025-05-08 09:45:00] Merged 510 bytes for 'typedecl'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'is_method'.
+[2025-05-08 09:45:00] Merged 1540 bytes (1.50 KiB) for 'is_method'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'is_module'.
+[2025-05-08 09:45:00] Merged 102 bytes for 'is_module'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'is_es2015_module'.
+[2025-05-08 09:45:00] Merged 24 bytes for 'is_es2015_module'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'local_namespace_names'.
+[2025-05-08 09:45:00] Merged 159 bytes for 'local_namespace_names'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'namespacedecl'.
+[2025-05-08 09:45:00] Merged 121 bytes for 'namespacedecl'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'is_computed'.
+[2025-05-08 09:45:00] Merged 123 bytes for 'is_computed'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'has_rest_parameter'.
+[2025-05-08 09:45:00] Merged 230 bytes for 'has_rest_parameter'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'comments'.
+[2025-05-08 09:45:00] Merged 78459 bytes (76.62 KiB) for 'comments'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'next_token'.
+[2025-05-08 09:45:00] Merged 40769 bytes (39.81 KiB) for 'next_token'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'char_class_escape'.
+[2025-05-08 09:45:00] Merged 1264 bytes (1.23 KiB) for 'char_class_escape'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'jump_targets'.
+[2025-05-08 09:45:00] Merged 3074 bytes (3.00 KiB) for 'jump_targets'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'range_quantifier_lower_bound'.
+[2025-05-08 09:45:00] Merged 178 bytes for 'range_quantifier_lower_bound'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'range_quantifier_upper_bound'.
+[2025-05-08 09:45:00] Merged 179 bytes for 'range_quantifier_upper_bound'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'is_nodejs'.
+[2025-05-08 09:45:00] Merged 89 bytes for 'is_nodejs'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'backref'.
+[2025-05-08 09:45:00] Merged 59 bytes for 'backref'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'xmlComments'.
+[2025-05-08 09:45:00] Merged 92 bytes for 'xmlComments'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'regexp_parse_errors'.
+[2025-05-08 09:45:00] Merged 97 bytes for 'regexp_parse_errors'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'isOptionalChaining'.
+[2025-05-08 09:45:00] Merged 63 bytes for 'isOptionalChaining'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'jsdoc'.
+[2025-05-08 09:45:00] Merged 27420 bytes (26.78 KiB) for 'jsdoc'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'jsdoc_tags'.
+[2025-05-08 09:45:00] Merged 129618 bytes (126.58 KiB) for 'jsdoc_tags'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'jsdoc_tag_descriptions'.
+[2025-05-08 09:45:00] Merged 7719 bytes (7.54 KiB) for 'jsdoc_tag_descriptions'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'is_generator'.
+[2025-05-08 09:45:00] Merged 208 bytes for 'is_generator'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'is_delegating'.
+[2025-05-08 09:45:00] Merged 21 bytes for 'is_delegating'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'toplevel_parent_xml_node'.
+[2025-05-08 09:45:00] Merged 40 bytes for 'toplevel_parent_xml_node'.
+[2025-05-08 09:45:00] Merging 1 fragment for 'js_parse_errors'.
+[2025-05-08 09:45:01] Merged 96 bytes for 'js_parse_errors'.
+[2025-05-08 09:45:01] Merging 1 fragment for 'template_placeholder_tag_info'.
+[2025-05-08 09:45:01] Merged 51 bytes for 'template_placeholder_tag_info'.
+[2025-05-08 09:45:01] Merging 1 fragment for 'jsdoc_tag_names'.
+[2025-05-08 09:45:01] Merged 17674 bytes (17.26 KiB) for 'jsdoc_tag_names'.
+[2025-05-08 09:45:01] Merging 1 fragment for 'jsdoc_type_exprs'.
+[2025-05-08 09:45:01] Merged 138497 bytes (135.25 KiB) for 'jsdoc_type_exprs'.
+[2025-05-08 09:45:01] Merging 1 fragment for 'is_named_capture'.
+[2025-05-08 09:45:01] Merged 36 bytes for 'is_named_capture'.
+[2025-05-08 09:45:01] Merging 1 fragment for 'jsdoc_errors'.
+[2025-05-08 09:45:01] Merged 1219 bytes (1.19 KiB) for 'jsdoc_errors'.
+[2025-05-08 09:45:01] Merging 1 fragment for 'is_static'.
+[2025-05-08 09:45:01] Merged 276 bytes for 'is_static'.
+[2025-05-08 09:45:01] Merging 1 fragment for 'is_externs'.
+[2025-05-08 09:45:01] Merged 224 bytes for 'is_externs'.
+[2025-05-08 09:45:01] Merging 1 fragment for 'jsdoc_prefix_qualifier'.
+[2025-05-08 09:45:01] Merged 1894 bytes (1.85 KiB) for 'jsdoc_prefix_qualifier'.
+[2025-05-08 09:45:01] Merging 1 fragment for 'jsdoc_record_field_name'.
+[2025-05-08 09:45:01] Merged 1822 bytes (1.78 KiB) for 'jsdoc_record_field_name'.
+[2025-05-08 09:45:01] Merging 1 fragment for 'jsdoc_has_new_parameter'.
+[2025-05-08 09:45:01] Merged 35 bytes for 'jsdoc_has_new_parameter'.
+[2025-05-08 09:45:01] Merging 1 fragment for 'sourceLocationPrefix'.
+[2025-05-08 09:45:01] Merged 17 bytes for 'sourceLocationPrefix'.
+[2025-05-08 09:45:01] Saving string and id pools to disk.
+[2025-05-08 09:45:01] [WARN] Failed to delete C:\Users\a8096\OneDrive\桌面\Malicious-Extensions-Detection\malicious-extensions-db\db-javascript\default\pools-tmp\0\buckets (attempt 1)
+                             java.nio.file.FileSystemException: C:\Users\a8096\OneDrive\桌面\Malicious-Extensions-Detection\malicious-extensions-db\db-javascript\default\pools-tmp\0\buckets: Det går inte att komma åt filen eftersom den
+                             används av en annan process
+                             	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source)
+                             	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+                             	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+                             	at java.base/sun.nio.fs.WindowsFileSystemProvider.implDelete(Unknown Source)
+                             	at java.base/sun.nio.fs.AbstractFileSystemProvider.delete(Unknown Source)
+                             	at java.base/java.nio.file.Files.delete(Unknown Source)
+                             	at com.semmle.util.files.FileUtil8.delete(FileUtil8.java:361)
+                             	at com.semmle.util.files.FileUtil8.deleteIfExists(FileUtil8.java:394)
+                             	at com.semmle.util.files.FileUtil8.lambda$deleteWithRetries$10(FileUtil8.java:628)
+                             	at com.semmle.util.files.FileUtil8.performWithRetries(FileUtil8.java:559)
+                             	at com.semmle.util.files.FileUtil8.deleteWithRetries(FileUtil8.java:627)
+                             	at com.semmle.util.files.FileUtil8$2.doDelete(FileUtil8.java:193)
+                             	at com.semmle.util.files.FileUtil8$2.tryDelete(FileUtil8.java:200)
+                             	at com.semmle.util.files.FileUtil8$2.tryDelete(FileUtil8.java:223)
+                             	at com.semmle.util.files.FileUtil8$2.postVisitDirectory(FileUtil8.java:264)
+                             	at com.semmle.util.files.FileUtil8$2.postVisitDirectory(FileUtil8.java:164)
+                             	at java.base/java.nio.file.Files.walkFileTree(Unknown Source)
+                             	at java.base/java.nio.file.Files.walkFileTree(Unknown Source)
+                             	at com.semmle.util.files.FileUtil8.recursiveDelete(FileUtil8.java:162)
+                             	at com.semmle.util.files.FileUtil8.strictRecursiveDelete(FileUtil8.java:136)
+                             	at com.semmle.util.files.FileUtil8.strictRecursiveDeleteWithRetries(FileUtil8.java:112)
+                             	at com.semmle.inmemory.stringpool.StringPool.promoteAndSave(StringPool.java:552)
+                             	at com.semmle.inmemory.MemoryBackend.saveMetadata(MemoryBackend.java:252)
+                             	at com.semmle.inmemory.trap.ImportTasksProcessor.close(ImportTasksProcessor.java:509)
+                             	at com.semmle.util.concurrent.FutureUtils.lambda$futureAutoclose$14(FutureUtils.java:222)
+                             	at java.base/java.util.concurrent.CompletableFuture.uniHandle(Unknown Source)
+                             	at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(Unknown Source)
+                             	at java.base/java.util.concurrent.CompletableFuture.postComplete(Unknown Source)
+                             	at java.base/java.util.concurrent.CompletableFuture.complete(Unknown Source)
+                             	at com.semmle.util.concurrent.Paralleliser.startMoreJobs(Paralleliser.java:126)
+                             	at com.semmle.util.concurrent.Paralleliser.lambda$startMoreJobs$2(Paralleliser.java:111)
+                             	at java.base/java.util.concurrent.CompletableFuture.uniWhenComplete(Unknown Source)
+                             	at java.base/java.util.concurrent.CompletableFuture$UniWhenComplete.tryFire(Unknown Source)
+                             	at java.base/java.util.concurrent.CompletableFuture.postComplete(Unknown Source)
+                             	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source)
+                             	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+                             	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+                             	at java.base/java.lang.Thread.run(Unknown Source)
+[2025-05-08 09:45:03] Finished importing TRAP files.
+[2025-05-08 09:45:03] Read 495.12 MiB of uncompressed TRAP data.
+[2025-05-08 09:45:03] Uncompressed relation data size: 141.07 MiB
+[2025-05-08 09:45:03] Relation data size: 32.45 MiB (merge rate: 3.09 MiB/s)
+[2025-05-08 09:45:03] String pool size: 14.03 MiB
+[2025-05-08 09:45:03] ID pool size: 111.00 MiB
+[2025-05-08 09:45:03] [PROGRESS] dataset import> Finished writing database (relations: 32.45 MiB; string pool: 14.03 MiB).
+[2025-05-08 09:45:03] Pausing evaluation to close the cache at sequence stamp o+371
+[2025-05-08 09:45:03] The disk cache is freshly trimmed; leave it be.
+[2025-05-08 09:45:03] Unpausing evaluation
+[2025-05-08 09:45:03] Plumbing command codeql dataset import completed.
+[2025-05-08 09:45:03] [PROGRESS] database finalize> TRAP import complete (46.3s).
+[2025-05-08 09:45:03] Running plumbing command: codeql database cleanup -- C:\Users\a8096\OneDrive\桌面\Malicious-Extensions-Detection\malicious-extensions-db
+[2025-05-08 09:45:14] [PROGRESS] database cleanup> Cleaning up existing TRAP files after import...
+[2025-05-08 09:45:14] [PROGRESS] database cleanup> TRAP files cleaned up (205ms).
+[2025-05-08 09:45:14] [PROGRESS] database cleanup> Cleaning up scratch directory...
+[2025-05-08 09:45:14] [PROGRESS] database cleanup> Scratch directory cleaned up (0ms).
+[2025-05-08 09:45:14] Running plumbing command: codeql dataset cleanup -- C:\Users\a8096\OneDrive\桌面\Malicious-Extensions-Detection\malicious-extensions-db\db-javascript
+[2025-05-08 09:45:14] [PROGRESS] dataset cleanup> Cleaning up dataset in C:\Users\a8096\OneDrive\桌面\Malicious-Extensions-Detection\malicious-extensions-db\db-javascript.
+[2025-05-08 09:45:14] Trimming disk cache at C:\Users\a8096\OneDrive\桌面\Malicious-Extensions-Detection\malicious-extensions-db\db-javascript\default\cache in mode trim.
+[2025-05-08 09:45:14] Sequence stamp origin is -6052000987884149166
+[2025-05-08 09:45:14] Pausing evaluation to quickly trim memory at sequence stamp o+0
+[2025-05-08 09:45:14] Unpausing evaluation
+[2025-05-08 09:45:14] Pausing evaluation to zealously trim disk at sequence stamp o+1
+[2025-05-08 09:45:14] Unpausing evaluation
+[2025-05-08 09:45:14] Trimming completed (15ms): Trimmed disposable data from cache.
+[2025-05-08 09:45:14] Pausing evaluation to close the cache at sequence stamp o+2
+[2025-05-08 09:45:14] The disk cache is freshly trimmed; leave it be.
+[2025-05-08 09:45:14] Unpausing evaluation
+[2025-05-08 09:45:14] [PROGRESS] dataset cleanup> Trimmed disposable data from cache.
+[2025-05-08 09:45:14] [PROGRESS] dataset cleanup> Finalizing dataset in C:\Users\a8096\OneDrive\桌面\Malicious-Extensions-Detection\malicious-extensions-db\db-javascript
+[2025-05-08 09:45:14] [DETAILS] dataset cleanup> Finished deleting ID pool from C:\Users\a8096\OneDrive\桌面\Malicious-Extensions-Detection\malicious-extensions-db\db-javascript (36ms).
+[2025-05-08 09:45:14] Plumbing command codeql dataset cleanup completed.
+[2025-05-08 09:45:14] Plumbing command codeql database cleanup completed with status 0.
+[2025-05-08 09:45:14] [PROGRESS] database finalize> Finished zipping source archive (1.46 MiB).
+[2025-05-08 09:45:14] Plumbing command codeql database finalize completed.
+[2025-05-08 09:45:14] [PROGRESS] database create> Successfully created database at C:\Users\a8096\OneDrive\桌面\Malicious-Extensions-Detection\malicious-extensions-db.
+[2025-05-08 09:45:14] Terminating normally.
