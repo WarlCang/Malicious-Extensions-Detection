@@ -1,91 +1,135 @@
 import csv
 import os
 import subprocess
+import re
+from collections import defaultdict
 
-INPUT_CSV = "result.csv"
-OUTPUT_CSV = "result_with_code.csv"
+# Settings
 BASE_DIR = "codex-example-extensions"
 CODEQL_DB = "malicious-extensions-db"
-QUERY_FILE = "codeql-queries/bookmark.ql"
+QUERIES = [
+    {"query_file": "codeql-queries/chrome.ql", "output_prefix": "chrome"},
+]
+
 TEMP_BQRS = "temp.bqrs"
 
-def run_codeql_query():
-    print("[*] Running CodeQL query...")
+
+def run_codeql_query(query_file, output_csv):
+    print(f"[*] Running CodeQL query: {query_file}")
     try:
-        # 1. Run the query safely
         subprocess.run([
             "codeql", "query", "run",
-            QUERY_FILE,
+            query_file,
             "--database", CODEQL_DB,
             "--output", TEMP_BQRS
         ], check=True)
 
-        # 2. Decode the bqrs to CSV
         subprocess.run([
             "codeql", "bqrs", "decode",
             TEMP_BQRS,
             "--format", "csv",
-            "--output", INPUT_CSV
+            "--output", output_csv
         ], check=True)
 
-        print("[*] Query and export completed successfully.")
+        print(f"[*] Query {query_file} completed and exported to {output_csv}")
 
     except subprocess.CalledProcessError as e:
-        print(f"[ERROR] CodeQL command failed with exit code {e.returncode}")
+        print(f"[ERROR] CodeQL command failed for {query_file} with exit code {e.returncode}")
         exit(e.returncode)
 
-def enrich_csv():
-    with open(INPUT_CSV, newline='', encoding='utf-8') as infile, \
-         open(OUTPUT_CSV, "w", newline='', encoding='utf-8') as outfile:
+
+def extract_method_call_nth_occurrence(file_path, line_num, method_snippet, occurrence_index):
+    """Extracts the Nth occurrence of the method call on the given line using strict balancing."""
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            lines = f.readlines()
+
+        index = line_num - 1
+        if index >= len(lines):
+            return "[line number out of range]"
+
+        # Get the entire remaining code from the line forward
+        code = lines[index].strip()
+        index += 1
+        while index < len(lines):
+            code += " " + lines[index].strip()
+            index += 1
+
+        # Find all occurrences
+        matches = [m.start() for m in re.finditer(re.escape(method_snippet), code)]
+        if len(matches) <= occurrence_index:
+            return f"[only {len(matches)} occurrence(s) found, requested {occurrence_index}]"
+
+        # Pick the Nth occurrence
+        snippet_pos = matches[occurrence_index]
+
+        after_snippet = code[snippet_pos:]
+        paren_pos = after_snippet.find('(')
+        if paren_pos == -1:
+            return "[no opening parenthesis found after snippet]"
+
+        extract_start = snippet_pos + paren_pos
+        open_parens = 1
+        i = extract_start + 1
+
+        while i < len(code):
+            if code[i] == '(':
+                open_parens += 1
+            elif code[i] == ')':
+                open_parens -= 1
+                if open_parens == 0:
+                    return code[snippet_pos:i + 1].strip()
+            i += 1
+
+        return "[parentheses never balanced]"
+
+    except Exception as e:
+        return f"[error reading file: {e}]"
+
+
+def enrich_csv_per_occurrence(input_csv, output_csv):
+    with open(input_csv, newline='', encoding='utf-8') as infile, \
+         open(output_csv, "w", newline='', encoding='utf-8') as outfile:
 
         reader = csv.reader(infile)
         writer = csv.writer(outfile)
 
         headers = next(reader)
-        writer.writerow(headers + ["code_line"])
+        writer.writerow(headers + ["extracted_code_block"])
+
+        # Track for each file + line + method how many times we have processed it
+        occurrence_counter = defaultdict(int)
 
         for row in reader:
-            file_path, line_str, *rest = row
-
-            norm_file_path = os.path.normpath(file_path)
-            abs_path = os.path.join(BASE_DIR, norm_file_path)
-
-            print(f"Trying: {abs_path}")
-
             try:
-                with open(abs_path, encoding='utf-8') as f:
-                    lines = f.readlines()
-                    line_num = int(line_str)
+                file_path = row[0]
+                line_str = row[1]
+                method_snippet = row[2]
 
-                    code_line = ""
-                    index = line_num - 1
-                    bracket_count = 0
-                    started = False
+                norm_file_path = os.path.normpath(file_path)
+                abs_path = os.path.join(BASE_DIR, norm_file_path)
 
-                    while index < len(lines):
-                        current_line = lines[index].strip()
-                        code_line += current_line + " "
+                key = (abs_path, int(line_str), method_snippet)
+                occurrence_index = occurrence_counter[key]
 
-                        for char in current_line:
-                            if char == "{":
-                                bracket_count += 1
-                                started = True
-                            elif char == "}":
-                                bracket_count -= 1
+                print(f"[*] Extracting occurrence {occurrence_index+1} from: {abs_path} at line {line_str} for '{method_snippet}'")
+                matched_code = extract_method_call_nth_occurrence(
+                    abs_path, int(line_str), method_snippet, occurrence_index
+                )
+                writer.writerow(row + [matched_code])
 
-                        if started and bracket_count == 0:
-                            break
-
-                        index += 1
-
-                    if not started:
-                        code_line = lines[line_num - 1].strip() if line_num <= len(lines) else "[line not found]"
+                # Increment the count for this key
+                occurrence_counter[key] += 1
 
             except Exception as e:
-                code_line = f"[error reading file: {e}]"
+                writer.writerow(row + [f"[error processing row: {e}]"])
 
-            writer.writerow(row + [code_line])
 
 if __name__ == "__main__":
-    run_codeql_query()
-    enrich_csv()
+    for query in QUERIES:
+        query_file = query["query_file"]
+        output_csv = f"{query['output_prefix']}_result.csv"
+        enriched_output_csv = f"{query['output_prefix']}_feed_chatgpt.csv"
+
+        run_codeql_query(query_file, output_csv)
+        enrich_csv_per_occurrence(output_csv, enriched_output_csv)
