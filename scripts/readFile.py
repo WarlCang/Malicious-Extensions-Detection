@@ -5,22 +5,33 @@ import re
 from collections import defaultdict
 
 # Settings
-BASE_DIR = "codex-example-extensions"
-CODEQL_DB = "malicious-extensions-db"
+BASE_DIRS = {
+    "malicious": "codex-example-extensions",
+    "safe": "safe-extension-samples"
+}
+
+DATABASES = {
+    "malicious": "malicious-extensions-db",
+    "safe": "safe-extensions-db"
+}
+
 QUERIES = [
     {"query_file": "codeql-queries/chrome.ql", "output_prefix": "chrome"},
+    {"query_file": "codeql-queries/postMessage.ql", "output_prefix": "postMessage"},
+    {"query_file": "codeql-queries/others.ql", "output_prefix": "others"},
 ]
+COMBINED_OUTPUT = "combined_feed_chatgpt.csv"  # Single output file
 
 TEMP_BQRS = "temp.bqrs"
 
 
-def run_codeql_query(query_file, output_csv):
-    print(f"[*] Running CodeQL query: {query_file}")
+def run_codeql_query(query_file, database, output_csv):
+    print(f"[*] Running CodeQL query: {query_file} on database: {database}")
     try:
         subprocess.run([
             "codeql", "query", "run",
             query_file,
-            "--database", CODEQL_DB,
+            "--database", database,
             "--output", TEMP_BQRS
         ], check=True)
 
@@ -87,16 +98,15 @@ def extract_method_call_nth_occurrence(file_path, line_num, method_snippet, occu
         return f"[error reading file: {e}]"
 
 
-def enrich_csv_per_occurrence(input_csv, output_csv):
-    with open(input_csv, newline='', encoding='utf-8') as infile, \
-         open(output_csv, "w", newline='', encoding='utf-8') as outfile:
-
+def enrich_csv_per_occurrence(input_csv, query_name, db_type):
+    """Returns enriched rows with additional columns for the query name and db type"""
+    enriched_rows = []
+    base_dir = BASE_DIRS[db_type]
+    
+    with open(input_csv, newline='', encoding='utf-8') as infile:
         reader = csv.reader(infile)
-        writer = csv.writer(outfile)
-
         headers = next(reader)
-        writer.writerow(headers + ["extracted_code_block"])
-
+        
         # Track for each file + line + method how many times we have processed it
         occurrence_counter = defaultdict(int)
 
@@ -107,7 +117,7 @@ def enrich_csv_per_occurrence(input_csv, output_csv):
                 method_snippet = row[2]
 
                 norm_file_path = os.path.normpath(file_path)
-                abs_path = os.path.join(BASE_DIR, norm_file_path)
+                abs_path = os.path.join(base_dir, norm_file_path)
 
                 key = (abs_path, int(line_str), method_snippet)
                 occurrence_index = occurrence_counter[key]
@@ -116,20 +126,45 @@ def enrich_csv_per_occurrence(input_csv, output_csv):
                 matched_code = extract_method_call_nth_occurrence(
                     abs_path, int(line_str), method_snippet, occurrence_index
                 )
-                writer.writerow(row + [matched_code])
+                
+                # Add db_type, query_name and extracted code to the row
+                enriched_rows.append(row + [db_type, query_name, matched_code])
 
                 # Increment the count for this key
                 occurrence_counter[key] += 1
 
             except Exception as e:
-                writer.writerow(row + [f"[error processing row: {e}]"])
+                enriched_rows.append(row + [db_type, query_name, f"[error processing row: {e}]"])
+    
+    return headers, enriched_rows
 
 
 if __name__ == "__main__":
-    for query in QUERIES:
-        query_file = query["query_file"]
-        output_csv = f"{query['output_prefix']}_result.csv"
-        enriched_output_csv = f"{query['output_prefix']}_feed_chatgpt.csv"
+    all_enriched_rows = []
+    combined_headers = None
+    
+    for db_type, database in DATABASES.items():
+        for query in QUERIES:
+            query_file = query["query_file"]
+            query_name = query["output_prefix"]
+            output_csv = f"{db_type}_{query_name}_result.csv"
 
-        run_codeql_query(query_file, output_csv)
-        enrich_csv_per_occurrence(output_csv, enriched_output_csv)
+            # Run query and get basic results
+            run_codeql_query(query_file, database, output_csv)
+            
+            # Enrich the results
+            headers, enriched_rows = enrich_csv_per_occurrence(output_csv, query_name, db_type)
+            
+            # Set combined headers (add db_type, query_name and extracted_code_block if not already present)
+            if combined_headers is None:
+                combined_headers = headers + ["db_type", "query_name", "extracted_code_block"]
+            
+            all_enriched_rows.extend(enriched_rows)
+    
+    # Write all results to a single file
+    with open(COMBINED_OUTPUT, "w", newline='', encoding='utf-8') as outfile:
+        writer = csv.writer(outfile)
+        writer.writerow(combined_headers)
+        writer.writerows(all_enriched_rows)
+    
+    print(f"[*] All results combined in {COMBINED_OUTPUT}")
