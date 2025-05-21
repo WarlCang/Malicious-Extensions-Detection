@@ -14,5 +14,4 @@ select
   mc.getLocation().getFile().getRelativePath(),
   mc.getLocation().getStartLine(),
   gvr.getName() + "." + mc.getCalleeName(),
-  "String.fromCharCode argument: " + mc.getArgument(0).asExpr(),
   mc.toString()

@@ -19,6 +19,7 @@ QUERIES = [
     {"query_file": "codeql-queries/chrome.ql", "output_prefix": "chrome"},
     {"query_file": "codeql-queries/postMessage.ql", "output_prefix": "postMessage"},
     {"query_file": "codeql-queries/others.ql", "output_prefix": "others"},
+    {"query_file": "codeql-queries/fetch.ql", "output_prefix": "fetch"},
 ]
 COMBINED_OUTPUT = "combined_feed_chatgpt.csv"  # Single output file
 

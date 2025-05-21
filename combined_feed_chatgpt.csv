@@ -193,32 +193,85 @@ taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/popup/popup.js,
 taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/product_analysis/product_analysis.js,1,window.parent.postMessage,"window. ... ://""+e)",malicious,postMessage,"window.parent.postMessage({m:""getCurrentUrl""},""*"")"
 taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/product_analysis/product_analysis.js,1,window.parent.postMessage,"window. ... ""},""*"")",malicious,postMessage,"window.parent.postMessage({m:""itemscoutProductAnalysisResize"",w:a,o:!e},""https://""+t)"
 taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/product_analysis/product_analysis.js,1,window.parent.postMessage,"window. ... ://""+t)",malicious,postMessage,"window.parent.postMessage({m:""productPageCrawling""},""https://""+t)"
-COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/background1.js,1,String.fromCharCode,String.fromCharCode argument: a[i],String. ... e(a[i]),malicious,others,String.fromCharCode(a[i])
-COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/crypto.js,1,String.fromCharCode,String.fromCharCode argument: o,String. ... Code(o),malicious,others,String.fromCharCode(o)
-COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/sjcl.js,11,String.fromCharCode,String.fromCharCode argument: e>>>8>>>8>>>8,String. ... >8>>>8),malicious,others,String.fromCharCode(e>>>8>>>8>>>8)
-HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0/src/background.87838840.js,7,String.fromCharCode,String.fromCharCode argument: 30,String. ... ode(30),malicious,others,String.fromCharCode(30)
-HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0/src/background.87838840.js,7,String.fromCharCode,String.fromCharCode argument: 31,String. ... ode(31),malicious,others,String.fromCharCode(31)
-HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0/src/content.00261377.js,16,String.fromCharCode,String.fromCharCode argument: n,String. ... Code(n),malicious,others,String.fromCharCode(n)
-HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0/src/content.00261377.js,34,String.fromCharCode,String.fromCharCode argument: e,String. ... Code(e),malicious,others,String.fromCharCode(e)
-HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0/src/content.00261377.js,34,String.fromCharCode,String.fromCharCode argument: 32,String. ... ode(32),malicious,others,String.fromCharCode(32)
-HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0/src/content.00261377.js,34,String.fromCharCode,String.fromCharCode argument: t.which,String. ... .which),malicious,others,String.fromCharCode(t.which)
-HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0/src/contentAli.899c5f46.js,16,String.fromCharCode,String.fromCharCode argument: n,String. ... Code(n),malicious,others,String.fromCharCode(n)
-HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0/src/contentAli.899c5f46.js,34,String.fromCharCode,String.fromCharCode argument: e,String. ... Code(e),malicious,others,String.fromCharCode(e)
-HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0/src/contentAli.899c5f46.js,34,String.fromCharCode,String.fromCharCode argument: 32,String. ... ode(32),malicious,others,String.fromCharCode(32)
-HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0/src/contentAli.899c5f46.js,34,String.fromCharCode,String.fromCharCode argument: t.which,String. ... .which),malicious,others,String.fromCharCode(t.which)
-JS-SEARCH-noUI-SURL-gjnlgmpokfpkonbdfkjbihmliofkjeok.1_0_6_0/src/lib/js/jquery.js,2,String.fromCharCode,String.fromCharCode argument: n+65536,String. ... +65536),malicious,others,String.fromCharCode(n+65536)
-JS-SEARCH-noUI-SURL-gjnlgmpokfpkonbdfkjbihmliofkjeok.1_0_6_0/src/lib/js/jquery.js,2,String.fromCharCode,String.fromCharCode argument: n>>10|55296,String. ... |56320),malicious,others,"String.fromCharCode(n>>10|55296,1023&n|56320)"
-JS-SEARCH-noUI-SURL-gjnlgmpokfpkonbdfkjbihmliofkjeok.1_0_6_0/src/lib/js/jqueryui.js,7,String.fromCharCode,String.fromCharCode argument: e.keyCode,String. ... eyCode),malicious,others,String.fromCharCode(e.keyCode)
-JS-SEARCH-noUI-SURL-gjnlgmpokfpkonbdfkjbihmliofkjeok.1_0_6_0/src/lib/js/jqueryui.js,8,String.fromCharCode,String.fromCharCode argument: null==e ... harCode,String. ... arCode),malicious,others,String.fromCharCode(null==e.charCode?e.keyCode:e.charCode)
-taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js,2470,String.fromCharCode,String.fromCharCode argument: code,String. ... e(code),malicious,others,String.fromCharCode(code)
-taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/chunk-vendors.81072308.js,13682,String.fromCharCode,String.fromCharCode argument: code,String. ... e(code),malicious,others,String.fromCharCode(code)
-taint-steps/1-getAMethodCall/src/agpoehmhgoieigdbjhgphpagmloehamn.2_0_0_0/lib/jquery/jquery-3.4.1.js,661,String.fromCharCode,String.fromCharCode argument: high + 0x10000,String. ... 10000 ),malicious,others,String.fromCharCode( high + 0x10000 )
-taint-steps/1-getAMethodCall/src/agpoehmhgoieigdbjhgphpagmloehamn.2_0_0_0/lib/jquery/jquery-3.4.1.js,663,String.fromCharCode,String.fromCharCode argument: high >> 10 | 0xD800,String. ... xDC00 ),malicious,others,"String.fromCharCode( high >> 10 | 0xD800, high & 0x3FF | 0xDC00 )"
-taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/18/18.js,2,String.fromCharCode,String.fromCharCode argument: e,String. ... Code(e),malicious,others,String.fromCharCode(e)
-taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/18/18.js,2,String.fromCharCode,String.fromCharCode argument: 32,String. ... ode(32),malicious,others,String.fromCharCode(32)
-taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/18/18.js,2,String.fromCharCode,String.fromCharCode argument: n.which,String. ... .which),malicious,others,String.fromCharCode(n.which)
-taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/313/313.js,2,String.fromCharCode,String.fromCharCode argument: t+(t>25?39:97),String. ... 39:97)),malicious,others,String.fromCharCode(t+(t>25?39:97))
-taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/893/893.js,1,String.fromCharCode,String.fromCharCode argument: t+(t>25?39:97),String. ... 39:97)),malicious,others,String.fromCharCode(t+(t>25?39:97))
+COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/background1.js,1,String.fromCharCode,String. ... e(a[i]),malicious,others,String.fromCharCode(a[i])
+COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/crypto.js,1,String.fromCharCode,String. ... Code(o),malicious,others,String.fromCharCode(o)
+COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/sjcl.js,11,String.fromCharCode,String. ... >8>>>8),malicious,others,String.fromCharCode(e>>>8>>>8>>>8)
+HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0/src/background.87838840.js,7,String.fromCharCode,String. ... ode(30),malicious,others,String.fromCharCode(30)
+HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0/src/background.87838840.js,7,String.fromCharCode,String. ... ode(31),malicious,others,String.fromCharCode(31)
+HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0/src/content.00261377.js,16,String.fromCharCode,String. ... Code(n),malicious,others,String.fromCharCode(n)
+HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0/src/content.00261377.js,34,String.fromCharCode,String. ... Code(e),malicious,others,String.fromCharCode(e)
+HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0/src/content.00261377.js,34,String.fromCharCode,String. ... ode(32),malicious,others,String.fromCharCode(32)
+HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0/src/content.00261377.js,34,String.fromCharCode,String. ... .which),malicious,others,String.fromCharCode(t.which)
+HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0/src/contentAli.899c5f46.js,16,String.fromCharCode,String. ... Code(n),malicious,others,String.fromCharCode(n)
+HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0/src/contentAli.899c5f46.js,34,String.fromCharCode,String. ... Code(e),malicious,others,String.fromCharCode(e)
+HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0/src/contentAli.899c5f46.js,34,String.fromCharCode,String. ... ode(32),malicious,others,String.fromCharCode(32)
+HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0/src/contentAli.899c5f46.js,34,String.fromCharCode,String. ... .which),malicious,others,String.fromCharCode(t.which)
+JS-SEARCH-noUI-SURL-gjnlgmpokfpkonbdfkjbihmliofkjeok.1_0_6_0/src/lib/js/jquery.js,2,String.fromCharCode,String. ... +65536),malicious,others,String.fromCharCode(n+65536)
+JS-SEARCH-noUI-SURL-gjnlgmpokfpkonbdfkjbihmliofkjeok.1_0_6_0/src/lib/js/jquery.js,2,String.fromCharCode,String. ... |56320),malicious,others,"String.fromCharCode(n>>10|55296,1023&n|56320)"
+JS-SEARCH-noUI-SURL-gjnlgmpokfpkonbdfkjbihmliofkjeok.1_0_6_0/src/lib/js/jqueryui.js,7,String.fromCharCode,String. ... eyCode),malicious,others,String.fromCharCode(e.keyCode)
+JS-SEARCH-noUI-SURL-gjnlgmpokfpkonbdfkjbihmliofkjeok.1_0_6_0/src/lib/js/jqueryui.js,8,String.fromCharCode,String. ... arCode),malicious,others,String.fromCharCode(null==e.charCode?e.keyCode:e.charCode)
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js,2470,String.fromCharCode,String. ... e(code),malicious,others,String.fromCharCode(code)
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/chunk-vendors.81072308.js,13682,String.fromCharCode,String. ... e(code),malicious,others,String.fromCharCode(code)
+taint-steps/1-getAMethodCall/src/agpoehmhgoieigdbjhgphpagmloehamn.2_0_0_0/lib/jquery/jquery-3.4.1.js,661,String.fromCharCode,String. ... 10000 ),malicious,others,String.fromCharCode( high + 0x10000 )
+taint-steps/1-getAMethodCall/src/agpoehmhgoieigdbjhgphpagmloehamn.2_0_0_0/lib/jquery/jquery-3.4.1.js,663,String.fromCharCode,String. ... xDC00 ),malicious,others,"String.fromCharCode( high >> 10 | 0xD800, high & 0x3FF | 0xDC00 )"
+taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/18/18.js,2,String.fromCharCode,String. ... Code(e),malicious,others,String.fromCharCode(e)
+taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/18/18.js,2,String.fromCharCode,String. ... ode(32),malicious,others,String.fromCharCode(32)
+taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/18/18.js,2,String.fromCharCode,String. ... .which),malicious,others,String.fromCharCode(n.which)
+taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/313/313.js,2,String.fromCharCode,String. ... 39:97)),malicious,others,String.fromCharCode(t+(t>25?39:97))
+taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/893/893.js,1,String.fromCharCode,String. ... 39:97)),malicious,others,String.fromCharCode(t+(t>25?39:97))
+BOOKMARK-akmaldiojcdmijjdgahboemcgbfmihlh.0_7_0_0/src/background.js,33,fetch,fetch,malicious,fetch,"fetch(urlBase+'/a/n-cl', { method: 'GET', })"
+BOOKMARK-akmaldiojcdmijjdgahboemcgbfmihlh.0_7_0_0/src/background.js,93,fetch,fetch,malicious,fetch,"fetch(urlBase+'/a/li-ch', { method: 'POST', headers: { 'Content-Type': 'application/json', }, body: JSON.stringify({ uuid: uuid }), })"
+BOOKMARK-akmaldiojcdmijjdgahboemcgbfmihlh.0_7_0_0/src/background.js,145,fetch,fetch,malicious,fetch,"fetch(urlBase+'/a/bo-ch', { method: 'POST', headers: { 'Content-Type': 'application/json', }, body: JSON.stringify({ uuid: uuid, bookmarks: bookmarks }), })"
+COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/assets/index.733e49c2.js,29,fetch,fetch,malicious,fetch,"fetch(n.href, i)"
+COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/assets/index.733e49c2.js,398,fetch,fetch,malicious,fetch,"fetch(e.url, { method: e.method, headers: e.headers })"
+COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/assets/index.733e49c2.js,409,fetch,fetch,malicious,fetch,"fetch(n.url, { method: n.method, headers: n.headers })"
+COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/assets/index.733e49c2.js,417,fetch,fetch,malicious,fetch,"fetch(t.url, { method: t.method, headers: t.headers })"
+COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/assets/index.733e49c2.js,425,fetch,fetch,malicious,fetch,"fetch(t.url, { method: t.method, headers: t.headers })"
+COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/background.js,511,fetch,fetch,malicious,fetch,"fetch(a.url, { method: a.method, headers: a.headers })"
+COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/background.js,754,fetch,fetch,malicious,fetch,"fetch(t.url, { method: t.method, headers: t.headers })"
+COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/background.js,764,fetch,fetch,malicious,fetch,"fetch(t.url, { method: t.method, headers: t.headers })"
+COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/background.js,773,fetch,fetch,malicious,fetch,"fetch(t.url, { method: t.method, headers: t.headers })"
+COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/background.js,834,fetch,fetch,malicious,fetch,fetch('https://ringring.mobi/v1/TranslatorDictionary.txt?t=' + Math.floor(Date.now() / 1000))
+COOKIE-ikdkbkbkdgffkcngafilhnamkgknlekc.3_0_0_0/src/background1.js,1,fetch,fetch,malicious,fetch,fetch(a)
+HISTORY-mmjbociiiafjimjiddoegfljjomglfoc.3_4_3_0/src/background.87838840.js,7,fetch,fetch,malicious,fetch,"fetch(e,{signal:i.signal,...n})"
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js,612,fetch,fetch,malicious,fetch,"fetch(url, { credentials: 'include' })"
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js,713,fetch,fetch,malicious,fetch,"fetch(_this3.primaryURL(""/users/new/anonymous.json?skip_default_page=true&utm_medium=extension&utm_source="".concat(CURRENT_BROWSER)), { method: 'POST', credentials: 'include' })"
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js,747,fetch,fetch,malicious,fetch,"fetch(_this4.primaryURL('/users/edit.json'), { method: 'PUT', credentials: 'include', body: data })"
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js,7513,fetch,fetch,malicious,fetch,"fetch(Startme[""a"" /* default */].apiURL(""/u/"".concat(userData.user.public_id, ""/extension_bookmarks.json?query="").concat(query.trim())), { method: 'GET', credentials: 'include', signal: controller.signal })"
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js,7637,fetch,fetch,malicious,fetch,"fetch(url, { credentials: 'include' })"
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js,7805,fetch,fetch,malicious,fetch,"fetch(url, { credentials: 'include' })"
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js,7879,fetch,fetch,malicious,fetch,"fetch(url, { credentials: 'include' })"
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js,7893,fetch,fetch,malicious,fetch,"fetch(Startme[""a"" /* default */].apiURL('/users/links_autosaving.json'), { credentials: 'include' })"
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js,7906,fetch,fetch,malicious,fetch,"fetch(Startme[""a"" /* default */].apiURL('/users/unsorted_link'), { method: 'POST', credentials: 'include', body: JSON.stringify(requestData.bookmarkData), headers: { 'Content-Type': 'application/json' } })"
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js,7924,fetch,fetch,malicious,fetch,"fetch(Startme[""a"" /* default */].apiURL('/users/unsorted_links'), { method: 'POST', credentials: 'include', body: JSON.stringify({ bookmarks: requestData.bookmarksData }), headers: { 'Content-Type': 'application/json' } })"
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js,7944,fetch,fetch,malicious,fetch,"fetch(Startme[""a"" /* default */].apiURL(""/users/unsorted_link/"".concat(requestData.id)), { method: 'PATCH', credentials: 'include', body: JSON.stringify(requestData.bookmarkData), headers: { 'Content-Type': 'application/json' } })"
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js,7961,fetch,fetch,malicious,fetch,"fetch(Startme[""a"" /* default */].apiURL('/users/links_autosaving'), { method: 'POST', credentials: 'include', body: JSON.stringify(requestData), headers: { 'Content-Type': 'application/json' } })"
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js,7979,fetch,fetch,malicious,fetch,"fetch(Startme[""a"" /* default */].apiURL(""/users/unsorted_link/"".concat(requestData.id)), { method: 'DELETE', credentials: 'include' })"
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js,7993,fetch,fetch,malicious,fetch,"fetch(Startme[""a"" /* default */].apiURL(""/widget/"".concat(requestData.widgetId, ""/item"")), { method: 'POST', credentials: 'include', body: JSON.stringify(requestData.bookmark), headers: { 'Content-Type': 'application/json' } })"
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js,8011,fetch,fetch,malicious,fetch,"fetch(Startme[""a"" /* default */].apiURL(""/widget/"".concat(requestData.widgetId, ""/items"")), { method: 'POST', credentials: 'include', body: JSON.stringify({ bookmarks: requestData.bookmarks }), headers: { 'Content-Type': 'application/json' } })"
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js,8031,fetch,fetch,malicious,fetch,"fetch(Startme[""a"" /* default */].apiURL(""/page/"".concat(requestData.pageId, ""/widget"")), { method: 'POST', credentials: 'include', body: JSON.stringify(requestData.widget), headers: { 'Content-Type': 'application/json' } })"
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js,8051,fetch,fetch,malicious,fetch,"fetch(Startme[""a"" /* default */].apiURL(""/tools/check_link_exists?url="".concat(requestData.url)), { credentials: 'include', signal: controller.signal })"
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js,8144,fetch,fetch,malicious,fetch,"fetch(Startme[""a"" /* default */].apiURL(""/tools/title?url="".concat(url)), { credentials: 'include' })"
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js,8163,fetch,fetch,malicious,fetch,"fetch(Startme[""a"" /* default */].apiURL(""/tools/title_from_resource?url="".concat(url)), { credentials: 'include' })"
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js,8223,fetch,fetch,malicious,fetch,"fetch(Startme[""a"" /* default */].apiURL('/import'), { method: 'POST', credentials: 'include', body: data })"
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js,8314,fetch,fetch,malicious,fetch,"fetch(Startme[""a"" /* default */].apiURL('/import/poll/' + importId), { credentials: 'include' })"
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/background.js,8496,fetch,fetch,malicious,fetch,"fetch(url, { credentials: 'include' })"
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/chunk-common.d3333ef8.js,212,fetch,fetch,malicious,fetch,"fetch(url, { credentials: 'include' })"
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/chunk-common.d3333ef8.js,313,fetch,fetch,malicious,fetch,"fetch(_this3.primaryURL(""/users/new/anonymous.json?skip_default_page=true&utm_medium=extension&utm_source="".concat(CURRENT_BROWSER)), { method: 'POST', credentials: 'include' })"
+taint-steps/0-propWrite/src/cfmnkhhioonhiehehedmnjibmampjiab.7_3_0_0/js/chunk-common.d3333ef8.js,347,fetch,fetch,malicious,fetch,"fetch(_this4.primaryURL('/users/edit.json'), { method: 'PUT', credentials: 'include', body: data })"
+taint-steps/3-getAParameter/src/bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0/popup.js,865,fetch,fetch,malicious,fetch,fetch(`https://www.google.com/s2/favicons?domain=${widgetUrlFromUser}&sz=128`)
+taint-steps/3-getAParameter/src/bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0/popup.js,1284,fetch,fetch,malicious,fetch,"fetch(""https://chat.openai.com/chat"")"
+taint-steps/3-getAParameter/src/bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0/popup.js,1557,fetch,fetch,malicious,fetch,fetch(url)
+taint-steps/3-getAParameter/src/bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0/popup.js,1674,fetch,fetch,malicious,fetch,"fetch(url, options)"
+taint-steps/3-getAParameter/src/bkiakepgpgfibglghlhdpacjdglfpbnn.0_0_4_0/popup.js,1682,fetch,fetch,malicious,fetch,fetch(`https://openweathermap.org/img/wn/${icon}.png`)
+taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/554/554.js,1,fetch,fetch,malicious,fetch,"fetch(i,s)"
+taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/background.js,1,fetch,fetch,malicious,fetch,"fetch(e,Object.assign(Object.assign({},n),{method:""GET""}))"
+taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/margin_calculator/margin_calculator.js,1,fetch,fetch,malicious,fetch,fetch(`https://m.search.naver.com/p/csearch/content/qapirender.nhn?pkid=141&key=exchangeApiBasic&where=nexearch&q=%ED%99%98%EC%9C%A8+%EA%B3%84%EC%82%B0%EA%B8%B0&u6=standardUnit&u7=0&u3=CNY&u4=KRW&u2=1&u1=keb&u8=down&u5=all&_=${e}`)
+taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/popup/popup.js,1,fetch,fetch,malicious,fetch,"fetch(n,c)"
+taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/product_analysis/product_analysis.js,1,fetch,fetch,malicious,fetch,"fetch(l,Object.assign(Object.assign({},a),{method:""GET""}))"
+taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/product_analysis_extracting_page/product_analysis_extracting_page.js,1,fetch,fetch,malicious,fetch,fetch(e)
+taint-steps/4-yield/src/ecmeogcbcoalojmkfkmancobmiahaigg.3_7_5_0/product_analysis_script/product_analysis_script.js,1,fetch,fetch,malicious,fetch,"fetch(`${""brand.naver.com""===location.host?""https://brand.naver.com/n"":""https://smartstore.naver.com/i""}/v1/stores/${n}/products/${e}`)"
+taint-steps/SUMMARY-simplified-snippets/getAParameter-react-functionbody-chrome.tabs.create.js,81,fetch,fetch,malicious,fetch,fetch(url)
 api-samples/action/background.js,9,chrome.tabs.create,chrome. ... '\r\n  }),safe,chrome,chrome.tabs.create({ url: 'demo/index.html' })
 api-samples/action/demo/index.js,76,chrome.tabs.create,chrome. ... om/' }),safe,chrome,chrome.tabs.create({ url: 'https://html5zombo.com/' })
 api-samples/action/demo/index.js,248,chrome.runtime.getURL,chrome. ... jiFile),safe,chrome,chrome.runtime.getURL(emojiFile)
@@ -393,8 +446,20 @@ functional-samples/tutorial.tabs-manager/popup.js,50,chrome.tabs.group,chrome. .
 functional-samples/tutorial.terminate-sw/test-extension/page.js,5,chrome.runtime.sendMessage,chrome. ... 'ping'),safe,chrome,chrome.runtime.sendMessage('ping')
 functional-samples/tutorial.terminate-sw/test-extension/service-worker-broken.js,4,chrome.runtime.getManifest,chrome. ... ifest(),safe,chrome,chrome.runtime.getManifest()
 functional-samples/tutorial.terminate-sw/test-extension/service-worker-fixed.js,2,chrome.runtime.getManifest,chrome. ... ifest(),safe,chrome,chrome.runtime.getManifest()
-functional-samples/sample.bookmarks/third-party/jquery-1.12.4.js,730,String.fromCharCode,String.fromCharCode argument: high + 0x10000,String. ... 10000 ),safe,others,String.fromCharCode( high + 0x10000 )
-functional-samples/sample.bookmarks/third-party/jquery-1.12.4.js,732,String.fromCharCode,String.fromCharCode argument: high >> 10 | 0xD800,String. ... xDC00 ),safe,others,"String.fromCharCode( high >> 10 | 0xD800, high & 0x3FF | 0xDC00 )"
-functional-samples/sample.bookmarks/third-party/jquery-ui-1.12.1.js,7560,String.fromCharCode,String.fromCharCode argument: event.keyCode,String. ... yCode ),safe,others,String.fromCharCode( event.keyCode )
-functional-samples/sample.bookmarks/third-party/jquery-ui-1.12.1.js,7578,String.fromCharCode,String.fromCharCode argument: event.keyCode,String. ... yCode ),safe,others,String.fromCharCode( event.keyCode )
-functional-samples/sample.bookmarks/third-party/jquery-ui-1.12.1.js,10269,String.fromCharCode,String.fromCharCode argument: event.c ... harCode,String. ... rCode ),safe,others,String.fromCharCode( event.charCode == null ? event.keyCode : event.charCode )
+functional-samples/sample.bookmarks/third-party/jquery-1.12.4.js,730,String.fromCharCode,String. ... 10000 ),safe,others,String.fromCharCode( high + 0x10000 )
+functional-samples/sample.bookmarks/third-party/jquery-1.12.4.js,732,String.fromCharCode,String. ... xDC00 ),safe,others,"String.fromCharCode( high >> 10 | 0xD800, high & 0x3FF | 0xDC00 )"
+functional-samples/sample.bookmarks/third-party/jquery-ui-1.12.1.js,7560,String.fromCharCode,String. ... yCode ),safe,others,String.fromCharCode( event.keyCode )
+functional-samples/sample.bookmarks/third-party/jquery-ui-1.12.1.js,7578,String.fromCharCode,String. ... yCode ),safe,others,String.fromCharCode( event.keyCode )
+functional-samples/sample.bookmarks/third-party/jquery-ui-1.12.1.js,10269,String.fromCharCode,String. ... rCode ),safe,others,String.fromCharCode( event.charCode == null ? event.keyCode : event.charCode )
+api-samples/action/demo/index.js,248,fetch,fetch,safe,fetch,fetch(chrome.runtime.getURL(emojiFile))
+api-samples/identity/identity.js,104,fetch,fetch,safe,fetch,"fetch(url, { method: method, headers: { Authorization: 'Bearer ' + access_token } })"
+api-samples/identity/identity.js,205,fetch,fetch,safe,fetch,"fetch( 'https://oauth2.googleapis.com/revoke?token=' + current_token.token, { method: 'POST' } )"
+api-samples/printing/printers.js,51,fetch,fetch,safe,fetch,fetch(filename)
+functional-samples/cookbook.wasm-helloworld-print/wasm/pkg/helloworld_demo.js,216,fetch,fetch,safe,fetch,fetch(input)
+functional-samples/cookbook.wasm-helloworld-print-nomodule/wasm/pkg/helloworld_demo.js,223,fetch,fetch,safe,fetch,fetch(input)
+functional-samples/libraries-xhr-in-sw/third_party/xhr-shim/xhr-shim.js,116,fetch,fetch,safe,fetch,"fetch(this[sURL], { method: this[sMethod] || 'GET', signal: this[sAbortController].signal, headers: this[sHeaders], credentials: this.withCredentials ? 'include' : 'same-origin', body })"
+functional-samples/sample.milestones/popup.js,34,fetch,fetch,safe,fetch,fetch(`https://crrie.com/c/?r=${revId}`)
+functional-samples/tutorial.google-analytics/scripts/google-analytics.js,73,fetch,fetch,safe,fetch,"fetch( `${ this.debug ? GA_DEBUG_ENDPOINT : GA_ENDPOINT }?measurement_id=${MEASUREMENT_ID}&api_secret=${API_SECRET}`, { method: 'POST', body: JSON.stringify({ client_id: await this.getOrCreateClientId(), events: [ { name, params } ] }) } )"
+functional-samples/tutorial.open-api-reference/sw-tips.js,5,fetch,fetch,safe,fetch,fetch('https://extension-tips.glitch.me/tips.json')
+functional-samples/tutorial.quick-api-reference/sw-tips.js,5,fetch,fetch,safe,fetch,fetch('https://extension-tips.glitch.me/tips.json')
+functional-samples/tutorial.websockets/service-worker.js,5,fetch,fetch,safe,fetch,"fetch('https://chrome-extension-websockets.glitch.me/', { mode: 'no-cors' })"
