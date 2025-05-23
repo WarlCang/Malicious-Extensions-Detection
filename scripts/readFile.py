@@ -5,7 +5,7 @@ import re
 from collections import defaultdict
 
 # Settings
-BASE_DIRS = {
+SOURCES = {
     "malicious": "codex-example-extensions",
     "safe": "safe-extension-samples"
 }
@@ -16,14 +16,14 @@ DATABASES = {
 }
 
 QUERIES = [
-    {"query_file": "codeql-queries/chrome.ql", "output_prefix": "chrome"},
-    {"query_file": "codeql-queries/postMessage.ql", "output_prefix": "postMessage"},
-    {"query_file": "codeql-queries/others.ql", "output_prefix": "others"},
-    {"query_file": "codeql-queries/fetch.ql", "output_prefix": "fetch"},
+    {"query_file": "codeql-queries/chrome.ql", "prefix": "chrome"},
+    {"query_file": "codeql-queries/postMessage.ql", "prefix": "postMessage"},
+    {"query_file": "codeql-queries/others.ql", "prefix": "others"},
+    {"query_file": "codeql-queries/fetch.ql", "prefix": "fetch"},
 ]
-COMBINED_OUTPUT = "combined_feed_chatgpt.csv"  # Single output file
 
 TEMP_BQRS = "temp.bqrs"
+COMBINED_OUTPUT = "combined_feed_chatgpt.csv"  # To be evaluated by ChatGPT
 
 
 def run_codeql_query(query_file, database, output_csv):
@@ -50,7 +50,7 @@ def run_codeql_query(query_file, database, output_csv):
         exit(e.returncode)
 
 
-def extract_method_call_nth_occurrence(file_path, line_num, method_snippet, occurrence_index):
+def extract_nth_occurrence(file_path, line_num, function_name, occurrence_index):
     """Extracts the Nth occurrence of the method call on the given line using strict balancing."""
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -68,7 +68,7 @@ def extract_method_call_nth_occurrence(file_path, line_num, method_snippet, occu
             index += 1
 
         # Find all occurrences
-        matches = [m.start() for m in re.finditer(re.escape(method_snippet), code)]
+        matches = [m.start() for m in re.finditer(re.escape(function_name), code)]
         if len(matches) <= occurrence_index:
             return f"[only {len(matches)} occurrence(s) found, requested {occurrence_index}]"
 
@@ -99,73 +99,71 @@ def extract_method_call_nth_occurrence(file_path, line_num, method_snippet, occu
         return f"[error reading file: {e}]"
 
 
-def enrich_csv_per_occurrence(input_csv, query_name, db_type):
-    """Returns enriched rows with additional columns for the query name and db type"""
-    enriched_rows = []
-    base_dir = BASE_DIRS[db_type]
+def add_code(input_csv, query_name, db_type):
+    added_rows = []
+    base_dir = SOURCES[db_type]
     
     with open(input_csv, newline='', encoding='utf-8') as infile:
         reader = csv.reader(infile)
         headers = next(reader)
         
-        # Track for each file + line + method how many times we have processed it
+        # Counter for same function in same line of same file
         occurrence_counter = defaultdict(int)
 
         for row in reader:
             try:
                 file_path = row[0]
                 line_str = row[1]
-                method_snippet = row[2]
+                function_name = row[2]
 
                 norm_file_path = os.path.normpath(file_path)
                 abs_path = os.path.join(base_dir, norm_file_path)
 
-                key = (abs_path, int(line_str), method_snippet)
+                key = (abs_path, int(line_str), function_name)
                 occurrence_index = occurrence_counter[key]
 
-                print(f"[*] Extracting occurrence {occurrence_index+1} from: {abs_path} at line {line_str} for '{method_snippet}'")
-                matched_code = extract_method_call_nth_occurrence(
-                    abs_path, int(line_str), method_snippet, occurrence_index
+                print(f"[*] Extracting occurrence {occurrence_index+1} from: {abs_path} at line {line_str} for '{function_name}'")
+                code = extract_nth_occurrence(
+                    abs_path, int(line_str), function_name, occurrence_index
                 )
                 
                 # Add db_type, query_name and extracted code to the row
-                enriched_rows.append(row + [db_type, query_name, matched_code])
+                added_rows.append(row + [db_type, query_name, code])
 
-                # Increment the count for this key
                 occurrence_counter[key] += 1
 
             except Exception as e:
-                enriched_rows.append(row + [db_type, query_name, f"[error processing row: {e}]"])
+                added_rows.append(row + [db_type, query_name, f"[error processing row: {e}]"])
     
-    return headers, enriched_rows
+    return headers, added_rows
 
 
 if __name__ == "__main__":
-    all_enriched_rows = []
+    final_rows = []
     combined_headers = None
     
     for db_type, database in DATABASES.items():
         for query in QUERIES:
             query_file = query["query_file"]
-            query_name = query["output_prefix"]
+            query_name = query["prefix"]
             output_csv = f"{db_type}_{query_name}_result.csv"
 
-            # Run query and get basic results
+            # Run queries
             run_codeql_query(query_file, database, output_csv)
             
-            # Enrich the results
-            headers, enriched_rows = enrich_csv_per_occurrence(output_csv, query_name, db_type)
+            # Extract the actual code
+            headers, added_rows = add_code(output_csv, query_name, db_type)
             
-            # Set combined headers (add db_type, query_name and extracted_code_block if not already present)
+            # Set combined headers
             if combined_headers is None:
                 combined_headers = headers + ["db_type", "query_name", "extracted_code_block"]
             
-            all_enriched_rows.extend(enriched_rows)
+            final_rows.extend(added_rows)
     
     # Write all results to a single file
     with open(COMBINED_OUTPUT, "w", newline='', encoding='utf-8') as outfile:
         writer = csv.writer(outfile)
         writer.writerow(combined_headers)
-        writer.writerows(all_enriched_rows)
+        writer.writerows(final_rows)
     
     print(f"[*] All results combined in {COMBINED_OUTPUT}")
